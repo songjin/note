@@ -3,7 +3,8 @@
 
 正好有同学让我推荐一些好的网站给他，我就试试看自己最常上的网站是那些。
 
-A:<amazon.com> 美国亚马逊
+A: <amazon.com> 美国亚马逊
+
 B：<baidu.com>
 C:<cnbeta.com> IT资讯
 D:<douban.com>
