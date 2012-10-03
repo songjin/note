@@ -1,0 +1,60 @@
+
+## 什么是Redis
+Redis是一个开源的,使用ANSI C语言编写的，基于内存的Key-Value型数据库。
+
+[官方网址](http://redis.io/)
+[Redis 命令参考](http://redis.readthedocs.org/en/latest/index.html)
+[[The-Little-Redis-Book](http://openmymind.net/2012/1/23/The-Little-Redis-Book/)
+[[The-Little-Redis-Book 中文](https://github.com/JasonLai256/the-little-redis-book/blob/master/cn/redis.md)
+
+## Redis的特点
+Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。
+
+Redis还支持多种Vaule数据结构类型，包括列表，集合，哈希表等数据类型。
+
+Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。
+
+## Redis安装
+
+就那么简单，几个命令，不用配置其他东西。
+
+	
+	$ wget http://redis.googlecode.com/	files/redis-2.4.2.tar.gz
+	$ tar xzf redis-2.4.2.tar.gz
+	$ cd redis-2.4.2
+	$ make 
+	$ make install
+	# 启动服务，默认已启动
+	$ src/redis-server
+	# 测试
+	$ src/redis-cli
+	redis> set foo bar
+	OK
+	redis> get foo
+	"bar"
+
+## 在Ruby中使用Redis
+
+[redis gem的rdoc](http://rubydoc.info/gems/redis/3.0.1/frames)
+
+首先，安装Redis的gem
+	
+	gem install redis
+
+然后就可以使用了
+
+	require 'redis'
+
+	redis = Redis.new(host: 'localhost', port: 6379)
+	redis.set('Time', Time.now)
+	puts redis.get('Time')
+
+
+
+## 资源
+
+
+
+
+
+

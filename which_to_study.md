@@ -10,6 +10,7 @@
 * Objective-C and iOS devlopment 
 * GNU/Linux,Shell Script,Tex，awk，Prel，RE，Gcc，GDB，Git，Docbook，etc 
 * Python, Lisp and Other intersting Language
+* OS, Compilers
 
 ## Want to write
 * Mark Up Language Prase 
