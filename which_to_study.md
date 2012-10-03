@@ -5,9 +5,9 @@
 * Web Development: HTML, CSS, Javascript, SQL
 * Ruby, Sinatra, Rails
 * Java and Android Devlopment
+* Objective-C and iOS devlopment 
 
 ## Future
-* Objective-C and iOS devlopment 
 * GNU/Linux,Shell Script,Tex，awk，Prel，RE，Gcc，GDB，Git，Docbook，etc 
 * Python, Lisp and Other intersting Language
 * OS, Compilers

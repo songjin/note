@@ -5,8 +5,10 @@
 * Xcode
 * brew
 * git 
-* rbenv
+* rbenv & ruby
 * macvim
+* textmate & sublime2
+
 
 
 
