@@ -4,6 +4,7 @@
 * HTML修复 rubyful_soup
 * XML/HTML解析 nokogiri
 * Mechanize
+* 爬虫：Spidr,anemone
 
 ###ORM
 * Sequel
