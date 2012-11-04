@@ -30,8 +30,9 @@ Python is another popular language, and it's also a popular language to build we
 * Rails Framwork is more powerful than Django or ther Python Web Framewrok
 * The Ruby's communication also more creative. Rails use the newest technolegy, use them as the default, such as Scss and coffee script.
 
-![Ruby]()
-### Learning Ruby on Rails is Sample
+![Ruby](http://www.ruby-lang.org/images/logo.gif)![Rails](http://rubyonrails.org/images/rails.png)
+### Learning Ruby on Rails is Simple
+
 
 There a famous image to compare Using Java and Rails to build application
 
@@ -58,7 +59,7 @@ And for most people whose native English is not English, there native language's
 see also [Ruby is not for beginners](http://www.horsesaysinternet.com/code/rails-is-not-for-beginners/)
 ### How to start Ruby on Rails
 
-* First, your should have basic skills of computer use. And know some basic of Web devlopment.
+* First, your should have basic skills of computer use. And know some basic of Web devlopment,such as HTML and CSS.
 
 * I really recommand to study Ruby first. In splite of you don't need to write many ruby statement in the begin, you will found Rails use many advantage features of Ruby Language. 
 
@@ -89,6 +90,7 @@ English
 * [Rails For Zombies](http://railsforzombies.org)
 * [A Curated List of Resources for Ruby and Rails Learning](http://www.learnrubyandrails.com)
 * [The Best Way to Learn Ruby on Rails](http://net.tutsplus.com/tutorials/ruby/the-best-way-to-learn-ruby-on-rails/)
+* [Railscast](http://railscasts.com)
 
 
 ---
