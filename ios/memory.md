@@ -36,3 +36,6 @@ http://www.cocoachina.com/bbs/read.php?tid=1848
 		此时newPt的地址不再为0Xaaaa，可能为0Xaabb 但是内容依然为0X1111。 因此newPt 和 pt 都可以管理"abc"所在的内存。因此 retainCount需要增加1   
 		copy的情况：NSString *newPt = [pt copy];  
 		此时会在堆上重新开辟一段内存存放@"abc" 比如0X1122 内容为@"abc 同时会在栈上为newPt分配空间 比如地址：0Xaacc 内容为0X1122 因此retainCount增加1供newPt来管理0X1122这段内存 
+		
+		
+http://interfacelab.com/objective-c-memory-management-for-lazy-people/

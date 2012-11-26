@@ -1,0 +1,150 @@
+## 多线程
+
+	class getImage extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+		}
+    }
+    
+ - doInBackgroud  后台
+ - onProgressUpdate 更新状态
+ - onPostExecute 执行完毕触发
+ 
+ 调用new getImage.execute(args)触发
+
+
+
+### 下载文件
+
+	package com.example.teset;
+	
+	import java.io.FileInputStream;
+	
+	import android.annotation.SuppressLint;
+	import android.app.Activity;
+	import android.app.DownloadManager;
+	import android.app.DownloadManager.Request;
+	import android.content.BroadcastReceiver;
+	import android.content.Context;
+	import android.content.Intent;
+	import android.content.IntentFilter;
+	import android.content.SharedPreferences;
+	import android.database.Cursor;
+	import android.graphics.BitmapFactory;
+	import android.net.Uri;
+	import android.os.Bundle;
+	import android.os.ParcelFileDescriptor;
+	import android.preference.PreferenceManager;
+	import android.view.Menu;
+	import android.widget.ImageView;
+	
+	@SuppressLint("NewApi")
+	public class MainActivity extends Activity {
+	
+	//所有的工作是在onResume中完成的，所以每次返回状态的时候都会判断下载的状态
+	//DownloadManager.enqeue()返回的ID来引用下载任务，将其保存到应用的设置中
+	//ACTION_DOWNLAND_COMPELETE是DownLodManager为所有完成任务发出的广播，所以要根据ID判断。
+	
+
+	ImageView  imageView;
+	private DownloadManager dm;
+	private SharedPreferences prefs;
+	private static final String DL_ID="Downland";
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        imageView = new ImageView(this);
+        setContentView(imageView);
+        
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        dm = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
+            
+    }
+    
+   
+    
+    
+
+    @Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (!prefs.contains(DL_ID)) {
+			//Start Downland
+			Uri resource = Uri.parse("http://bigfoto.com/dog-animal.jpg");
+			DownloadManager.Request request = new DownloadManager.Request(resource);
+			request.setAllowedNetworkTypes(Request.NETWORK_MOBILE | Request.NETWORK_WIFI );
+			request.setAllowedOverRoaming(false);
+			request.setTitle("DownLand Sample"); //Display in the Notification
+			/* request.setTitle
+			 *        .setDescription
+			 *   显示通知栏的信息
+			 */
+			long id = dm.enqueue(request); // Save ID
+			prefs.edit().putLong(DL_ID, id).commit(); 
+			/*
+			 * 默认存在缓存中。
+			 * Request.setDestination()指定保存在外部存储上的URL
+			 * Request.setDestinationInExternalFilesDir()将外部存储上隐藏的文件夹指定为下载位置
+			 * Request.setDestinationInExternalPublicDir()外部。。。共享。。。指定为下载位置
+			 */
+		}else {
+			// Hava start Downland, to check the status
+			queryDownLandStatus();
+		}
+		registerReceiver(receiver,  new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+	}
+
+
+
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		unregisterReceiver(receiver);
+	}
+
+	private BroadcastReceiver receiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			queryDownLandStatus();
+		}
+	};
+	
+	private void queryDownLandStatus() {
+		DownloadManager.Query query = new DownloadManager.Query();
+		query.setFilterById(prefs.getLong(DL_ID, 0));
+		Cursor c = dm.query(query);
+		if (c.moveToFirst()) {
+			int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+			switch (status) {		
+			case DownloadManager.STATUS_PAUSED:
+			case DownloadManager.STATUS_PENDING:
+			case DownloadManager.STATUS_RUNNING:
+				break; // DownLanding , need not do anything
+			case DownloadManager.STATUS_SUCCESSFUL:
+				try {  // Finish, Display the picture
+					ParcelFileDescriptor file = dm.openDownloadedFile(prefs.getLong(DL_ID, 0));
+					FileInputStream fis = new ParcelFileDescriptor.AutoCloseInputStream(file);
+					imageView.setImageBitmap(BitmapFactory.decodeStream(fis));
+				}catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				
+				break;
+			case DownloadManager.STATUS_FAILED:
+				// ReDownland
+				dm.remove(prefs.getLong(DL_ID, 0));
+				prefs.edit().clear().commit();
+				break;
+			}
+		}
+	}
+
