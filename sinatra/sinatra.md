@@ -39,3 +39,8 @@ Sinatra是Ruby写成的一个DSL（domain-specific language 领域专门语言�
 HTTP是超文本传输协议（HTTP，HyperText Transfer Protocol，最初是设计用来传输HTML用的。
 
 说白了，就是客户端和服务器之间怎么交流的方式，一种约定。
+
+
+
+
+- http://www.infoq.com/cn/articles/sinatra-intro

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<p>http://www.vogella.com/articles/AndroidListView/article.html</p>
+
+<ul>
+<li>
+<p>ArrayAdapter can handle data based on Arrays or java.util.List.</p>
+</li>
+
+<li>
+<p>SimpleCursorAdapter can handle database related data. This description focuses on the non database case.</p>
+</li>
+</ul>
+
+<p>The Android platform provides default layouts for rows in ListViews. For example android.R.layout.simple_list_item1. By default ArrayAdapter uses the android.R.id.text1 ID, but you can define another one in the ArrayAdapter constructor.</p>
+
+<p>Layout</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot; &gt;
+
+    &lt;ListView
+        android:id=&quot;@+id/mylist&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot; &gt;
+    &lt;/ListView&gt;
+
+&lt;/LinearLayout&gt; </code></pre>
+
+<p>Activity</p>
+
+<pre><code>ListView listView = (ListView) findViewById(R.id.mylist);
+String[] values = new String[] { &quot;Android&quot;, &quot;iPhone&quot;, &quot;WindowsMobile&quot;,
+  &quot;Blackberry&quot;, &quot;WebOS&quot;, &quot;Ubuntu&quot;, &quot;Windows7&quot;, &quot;Max OS X&quot;,
+  &quot;Linux&quot;, &quot;OS/2&quot; };
+
+// First paramenter - Context
+// Second parameter - Layout for the row
+// Third parameter - ID of the TextView to which the data is written
+// Forth - the Array of data
+ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,
+  android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+// Assign adapter to ListView
+listView.setAdapter(adapter); </code></pre>
+
+<p>listener</p>
+
+<pre><code> listView.setOnItemClickListener(new OnItemClickListener() {
+  @Override
+  public void onItemClick(AdapterView&lt;?&gt; parent, View view,
+    int position, long id) {
+    Toast.makeText(getApplicationContext(),
+      &quot;Click ListItem Number &quot; + position, Toast.LENGTH_LONG)
+      .show();
+  }
+}); </code></pre>
+
+<p>自动义行</p>
+
+<pre><code>package de.vogella.android.listactivity;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MySimpleArrayAdapter extends ArrayAdapter&lt;String&gt; {
+  private final Context context;
+  private final String[] values;
+
+  public MySimpleArrayAdapter(Context context, String[] values) {
+    super(context, R.layout.rowlayout, values);
+    this.context = context;
+    this.values = values;
+  }
+
+  @Override
+  public View getView(int position, View convertView, ViewGroup parent) {
+    LayoutInflater inflater = (LayoutInflater) context
+        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View rowView = inflater.inflate(R.layout.rowlayout, parent, false);
+    TextView textView = (TextView) rowView.findViewById(R.id.label);
+    ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
+    textView.setText(values[position]);
+    // Change the icon for Windows and iPhone
+    String s = values[position];
+    if (s.startsWith(&quot;iPhone&quot;)) {
+      imageView.setImageResource(R.drawable.no);
+    } else {
+      imageView.setImageResource(R.drawable.ok);
+    }
+
+    return rowView;
+  }
+} </code></pre>
+
+<p>listactivity</p>
+
+<p>package de.vogella.android.listactivity;</p>
+
+<p>import android.app.ListActivity; import android.os.Bundle; import android.widget.ArrayAdapter;</p>
+
+<p>public class MyListActivity extends ListActivity { public void onCreate(Bundle icicle) { super.onCreate(icicle); String<span /> values = new String<span /> { &#8220;Android&#8221;, &#8220;iPhone&#8221;, &#8220;WindowsMobile&#8221;, &#8220;Blackberry&#8221;, &#8220;WebOS&#8221;, &#8220;Ubuntu&#8221;, &#8220;Windows7&#8221;, &#8220;Max OS X&#8221;, &#8220;Linux&#8221;, &#8220;OS/2&#8221; }; ArrayAdapter<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,
+        android.R.layout.simple_list_item_1, values);
+    setListAdapter(adapter);
+  }
+} </pre></p></html>
+</body>

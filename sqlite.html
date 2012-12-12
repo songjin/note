@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<h3 id='introduce'>introduce</h3>
+
+<p>SQLite是一个C语言实现的，开源的，嵌入式的关系型数据库。</p>
+
+<h3 id='embedded'>Embedded</h3>
+
+<p>它对数据库的操作集成在操作数据库的程序之中，而不是有一个独立的数据库管理程序。所以你不用像操作MySQL一样一开始要配置服务器啊，管理帐号什么的东西。所有的操作都是通过调用SQLite的API实现</p>
+
+<h3 id='install'>install</h3>
+
+<h3 id='start'>start</h3>
+
+<p>打开/新建数据库</p>
+
+<pre><code>sqlite3 test.db</code></pre>
+
+<p>新建一张表，有两列，一列是叫id的，类型为integer的主键，一列是叫value的text类型的数据。</p>
+
+<pre><code>sqlite&gt; create table test (id integer primary key, value text);</code></pre>
+
+<p>插入一些数据</p>
+
+<pre><code>sqlite&gt; insert into test (id,value) values(1,&#39;fda&#39;);
+sqlite&gt; insert into test (id,value) values(2,&#39;ffdda&#39;);
+sqlite&gt; insert into test (value) values(&#39;ffdda&#39;);
+sqlite&gt; insert into test (value) values(&#39;no&#39;);</code></pre>
+
+<p>看看表是怎么样的</p>
+
+<pre><code>sqlite&gt; .mode column　// 以列模式显示	sqlite&gt; .headers on 	sqlite&gt; select * from test;</code></pre>
+
+<p>可以用SQL函数列出最后一行的id</p>
+
+<pre><code>select last_insert_rowid();</code></pre>
+
+<p>可以添加索引</p>
+
+<pre><code>sqlite&gt; create index test_idx on test (value);	sqlite&gt; create view schema as select * from sqlite_master;	</code></pre>
+
+<p>可以列出索引 sqlite&gt; .indices test 可以查看创建的模式 sqlite&gt; .schema test sqlite_master　是数据库系统本身的信息 sqlite&gt; .mode column sqlite&gt; .headers on sqlite&gt; select type, name, tbl_name, sql from sqlite_master order by type; type name tbl_name sql &#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;- index test_idx test CREATE INDEX test_idx on test (value) table test test CREATE TABLE test (id integer primary view schema schema CREATE VIEW schema as select * from s</p>
+
+<p>可以输出SQL</p>
+
+<pre><code>sqlite&gt; .dump</code></pre>
+
+<p>输出之前可以重定向</p>
+
+<pre><code>sqlite&gt; .output file.sql	sqlite&gt; .dump	sqlite&gt; .output stdout</code></pre>
+
+<p>可以查看当前命令行的设置 .show 可以从SQL读入表格 sqlite&gt; drop table test; sqlite&gt; drop view schema; sqlite&gt; .read file.sql</p>
+
+<p>如果想输出CSV文件，可以这样 sqlite3&gt; .output file.csv sqlite3&gt; .separator , sqlite3&gt; select * from test; sqlite3&gt; .output stdout</p>
+
+<p>也可以用内置的CSV模式 sqlite3&gt; .output file.csv sqlite3&gt; .mode csv sqlite3&gt; select * from test; sqlite3&gt; .output stdout</p>
+
+<p>可以进行选择，只输出value为m开头的值</p>
+
+<pre><code>sqlite&gt; .output text.csv	sqlite&gt; .separator ,	sqlite&gt; select * from test where value like &#39;m%&#39;;	sqlite&gt; .output stdout</code></pre>
+
+<p>可以将输出的数据导入另外一个表</p>
+
+<pre><code>sqlite&gt; create table test2(id integer primary key, value text);	sqlite&gt; .import text.csv test2</code></pre>
+
+<p>可以通过系统命令导入或者导出 sqlite3 test.db .dump sqlite3 test.db .dump &gt; test.sql sqlite3 test.db &#8220;select * from test&#8221; sqlite3 test2.db &lt; test.sql sqlite3 –init test.sql test3.db</p>
+
+<p>备份之前可以先清空那些已经删除的元素的空间 sqlite3 test.db vacuum cp test.db test.backup 可以分析数据库的情况 sqlite3_analyzer test.db</p>
+
+<p>SQL语句的语法是这样的 select id from foods where name= JujyFruit ; 分别对应verb subject predicate</p></html>
+</body>

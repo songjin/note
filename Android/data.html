@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<h2 id='json'>解析JSON</h2>
+
+<p>JSON太多引号转义，Java又没有原始字符串，就不写了。</p>
+
+<p>另外还有.getJSONOBject方法</p>
+
+<pre><code>    try {
+        JSONObject personJsonObject = (new JSONObject(JSON_STRING).getJSONObject(&quot;person&quot;));
+        String name line1 = personJsonObject.getString(&quot;name&quot;);
+        line1.setText(&quot;The person&#39;s name is&quot; + name );
+        line2.setText(name + &quot;has&quot; + personJsonObject.getJSONArray(&quot;chrildred&quot;).length + &quot;chirldren&quot;);
+        
+    }catch (JSONException e) {
+        e.printStackTrace();
+    }</code></pre>
+
+<h3 id='id20'>下载图片</h3>
+
+<p>注：这个程序运行的时候意外退出</p>
+
+<p>建立WebImageView类</p>
+
+<pre><code>package com.example.teset;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+import org.apache.http.util.ByteArrayBuffer;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.util.AttributeSet;
+import android.widget.ImageView;
+
+public class WebImageView extends ImageView {
+    private Drawable mPlaceholder, mImage;
+    
+
+public WebImageView (Context context) {
+    this(context, null);
+    
+}
+
+public WebImageView (Context context, AttributeSet attrs) {
+    this(context, null, 0);
+    
+}
+
+public WebImageView (Context context, AttributeSet attrs,int defualtStyle) {
+    super(context, null, defualtStyle);
+    
+}
+
+
+public void setPlaceholderImage(Drawable drawable) {
+    mPlaceholder = drawable;
+    if (mImage == null) 
+        setImageDrawable(mPlaceholder);
+}
+
+
+public void setPlaceholderImage(int resid) {
+    mPlaceholder = getResources().getDrawable(resid);
+    if (mImage == null) {
+        setImageDrawable(mPlaceholder);
+    }
+}
+
+public void  setImageUrl(String url) {
+    DownlandTask task = new DownlandTask();
+    task.execute(url);
+}
+    
+    
+private class DownlandTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
+
+    @Override
+    protected Bitmap doInBackground(String... params) {
+        // TODO Auto-generated method stub
+        String url = params[0];
+        try {
+            URLConnection connection = (new URL(url)).openConnection();
+            InputStream is = connection.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is);
+            ByteArrayBuffer baf = new ByteArrayBuffer(50);
+            int current = 0;
+            while ((current = bis.read()) != -1) {
+                    baf.append((byte)current);
+            }
+            byte [] imageData = baf.toByteArray();
+            return BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+        } catch (Exception e) {
+            return null;
+            // TODO: handle exception
+        }
+    }
+        
+        
+        @SuppressWarnings(&quot;deprecation&quot;)
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            mImage = new BitmapDrawable(result);
+            if (mImage != null) {
+                setImageDrawable(mImage);
+            }
+        }
+        
+
+}</code></pre>
+
+<p>}</p>
+
+<p>主程序调用</p>
+
+<pre><code>        WebImageView imageView = (WebImageView)findViewById(R.id.webImage);
+        //imageView.setPlaceholderImage(R.drawable.icon);
+        //imageView.setImageUrl(&quot;http://www.ruby-lang.org/images/logo.gif&quot;);</code></pre>
+
+<p>layout声明</p>
+
+<p>因为不属于Android包，所以必须有完整声明</p>
+
+<pre><code>&lt;com.examples.WebImageView
+    android:id = &quot;@+ id/webImage&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+  /&gt;</code></pre>
+
+<p>注意：Android的UI类都是非线程安全的。一样要在主程序中用回调方法来更新UI，不要在doInBackground中更新。</p>
+
+<pre><code>@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.activity_main, menu);
+    return true;
+}
+}</code></pre></html>
+</body>

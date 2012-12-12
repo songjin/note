@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<h3 id='id22'>发送短信</h3>
+
+<pre><code>private void sendSMS(String message, String phoneNumber) {
+    SmsManager sms = SmsManager.getDefault();
+    List&lt;String&gt; texts = sms.divideMessage(message);
+
+    for (String text : texts) {
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
+        Log.i(&quot;sms&quot;, &quot;send a message&quot;);
+    }
+}</code></pre></html>
+</body>

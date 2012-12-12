@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<p>POST请求 http://172.16.102.208:8089/wiapi/score?leaderboard_id=1&amp;score=36&amp;app_key=66</p>
+
+<p>目的1：通过脚本发送post请求。 答案： curl -d &#8220;leaderboard_id=7778a8143f111272&amp;score=19&amp;app_key=8d49f16fe034b98b&amp;_test_user=test01&#8221; &#8220;http://172.16.102.208:8089/wiapi/score&#8221;</p>
+
+<p>目的2：通过脚本发送post请求，顺便附带文本数据，比如通过&#8221;浏览&#8221;选择本地的card.txt并上传发送post请求 答案： curl -F &#8220;blob=@card.txt;type=text/plain&#8221; &#8220;http://172.16.102.208:8089/wiapi/score?leaderboard_id=7778a8143f111272&amp;score=40&amp;app_key=8d49f16fe034b98b&amp;_test_user=test01&#8221;</p>
+
+<p>其中-F 为带文件的形式发送post请求， blob为文本框中的name元素对应的属性值。<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;type=&quot;text&quot; name=&quot;blob&quot;&gt;</pre></p></html>
+</body>

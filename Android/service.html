@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<p>创建一个服务（当然要在Manifest中注册）</p>
+
+<pre><code>public class update extends Service {
+
+	@Override
+	public IBinder onBind(Intent intent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}</code></pre>
+
+<p>启动或者暂停服务</p>
+
+<pre><code>startService(new Intent(this, update.class));
+stopService(new Intent(this, update.class));</code></pre>
+
+<p>用一个内部类继承Thread来定时在后台开启服务</p>
+
+<pre><code>private class DoSomething extends Thread {
+
+
+	public void run(){
+		While (runFlag) {
+			doSomething();
+			Thread.sleep(DELAY);
+		}
+	}
+
+}</code></pre></html>
+</body>

@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC
-    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
-    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
-<html xml:lang='en' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/1999/xhtml'>
-<head><meta content='application/xhtml+xml;charset=utf-8' http-equiv='Content-type' /><title></title></head>
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
 <body>
 <h3 id='id1'>自定义窗口　</h3>
 
@@ -485,6 +486,25 @@ public void onCreate(Bundle savedInstanceState) {
     webview.loadUrl(&quot;http://linxiangyu.info&quot;);
     setContentView(webview);</code></pre>
 
+<p>loadView 乱码</p>
+
+<pre><code>http://www.eoeandroid.com/thread-990-1-1.html
+    
+如果单纯显示文字的话可以写webView.loadDataWithBaseURL(null, string, &quot;text/html&quot;, &quot;utf-8&quot;, null);
+
+
+如果要显示图片可以写webView.loadDataWithBaseURL(baseUrl, string, &quot;text/html&quot;, &quot;utf-8&quot;, null);
+其中baseUrl为你存储照片的路径，比如：
+String baseUrl=&quot;file:///sdcard/images/photo/&quot;;</code></pre>
+
+<p>http://blog.sina.com.cn/s/blog_4c0706560100r8qy.html</p>
+
+<pre><code>2.      许多实用loadData方法的朋友都遇到显示乱码的问题，那是因为编码器设置错误导致的。我们知道String类型的数据主要是unicode编码，而WebView一般为了节省资源使用的是UTF-8编码，所以我们在loadData的时候要告诉方法怎样转码。即要告诉它要将unicode编码的内容转成UTF-8编码的内容。有些朋友虽然在loadData的时候设置了编码方式，但是还是显示乱码，这是因为还需要为WebView的text编码指定编码方式。举例如下：
+           WebView wv = (WebView)findViewById(R.id.webview) ;
+                  String content = getUnicodeContent() ;
+           wv.getSettings().setDefaultTextEncodingName(“UTF -8”) ;
+           wv.loadData(content, “text/html”, “UTF-8”) ;</code></pre>
+
 <h3 id='webview_'>WebView 显示本地图片或资源</h3>
 
 <pre><code>loadURL(&quot;file:///android_asset/android.jpg&quot;);
@@ -632,5 +652,5 @@ public boolean onCreateOptionsMenu(Menu menu) {
     	
     }catch (JSONException e) {
     	e.printStackTrace();
-    }</code></pre>
-</body></html>
+    }</code></pre></html>
+</body>

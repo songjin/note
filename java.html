@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<h1 id='java_'>Java 笔记</h1>
+
+<h3 id='java'>Java特点</h3>
+
+<ul>
+<li>cross-platform （JVM的优秀）</li>
+
+<li>OOP</li>
+
+<li>GC</li>
+
+<li>Speed（相对于Python　Ruby） * 学习资源 * 强类型，静态</li>
+
+<li>Android</li>
+</ul>
+
+<h3 id='main'>main</h3>
+
+<pre><code>public static void main(String[] args)</code></pre>
+
+<h3 id='type'>Type</h3>
+
+<ul>
+<li>
+<p>boolean 与　int不相容</p>
+</li>
+
+<li>
+<p>primitive：</p>
+
+<ul>
+<li>boolean</li>
+
+<li>char (16)</li>
+
+<li>byte (8)</li>
+
+<li>short (16)</li>
+
+<li>int (32)</li>
+
+<li>long (64)</li>
+
+<li>float (32)</li>
+
+<li>double (64) * 初始值 -　int, char : 0</li>
+
+<li>boolean :false</li>
+
+<li>引用: null</li>
+</ul>
+</li>
+
+<li>
+<p>All operate of the Object is refrence * == - 比较基类 - 比较引用是否链接到同一个对象</p>
+
+<h3 id='controlflow'>Control　Flow</h3>
+</li>
+
+<li>
+<p>for(int type: typeSet) {}</p>
+</li>
+</ul>
+
+<h3 id='oo'>OO</h3>
+
+<ul>
+<li>
+<p>ArrayList<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
+&lt;class&gt; myList = new ArrayList&lt;class&gt; ()</pre></p>
+</li>
+
+<li>
+<p>import</p>
+</li>
+
+<li>
+<p>extends</p>
+</li>
+
+<li>
+<p>private delfault protected public (public会被继承，pravite不会)</p>
+</li>
+
+<li>
+<p>the refrence can be the father class e.g. <code>Animal[1] = new Dog()</code>, <code>Animal[1].eat</code> calls <code>Dog.eat()</code> * 参数和返回类型也可以用负父类</p>
+</li>
+
+<li>
+<p>重载方法　参数和return类型都要相同，而且不能降低权限 * 抽象类 <code>abstract xxx classname</code> 不能被new</p>
+</li>
+
+<li>
+<p>抽象方法　<code>public abstract xxx</code> 没有实体</p>
+</li>
+
+<li>
+<p>Object　Class的方法：　equal　,getClass, toString, hashCode</p>
+</li>
+
+<li>
+<p>根据引用来判断methon调用而不是Objective类型</p>
+</li>
+
+<li>
+<p>inferface　接口类似于１００％的抽象类</p>
+</li>
+
+<li>
+<p>public inferface Pet{}</p>
+</li>
+
+<li>
+<p>public class Dog extends Cannie implements Pet {}</p>
+</li>
+
+<li>
+<p>heap 里面只有对象，局部变量，方法调用，原始类型，引用都在stack里面，实例变量在对象所属的堆空间上 * 构造函数　覆盖</p>
+</li>
+
+<li>
+<p>构造很熟　super　编译器会给无参数的构造函数加上super，有参数要自己super(arg)</p>
+</li>
+
+<li>
+<p>this对自身的引用，与super不能同时用</p>
+</li>
+</ul>
+
+<p>* 静态方法（类方法）） * static * 静态变量 * final</p></html>
+</body>
