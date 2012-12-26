@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<p><a href='http://greendroid.cyrilmottier.com/'>Green Droid</a> is a great open source library for Android UI Devlopment. And it&#8217;s under Apache License, you can use it in commercial product.</p>
+
+<p>Use the library is samlpe:</p>
+
+<ol>
+<li>
+<p>Under your project directory: <code>git clone git://github.com/cyrilmottier/GreenDroid.git</code></p>
+</li>
+
+<li>
+<p>Open Eclipese, <code>New -&gt; Android Project from Existing Code</code><code>, chose the directory of GreenDroid</code></p>
+</li>
+
+<li>
+<p>You may need to fix some error. Becouse Eclipese will treat the GreenDroid-GoogleApis as Android Project and not link the Google API Library automatically. Chose the project&#8217;s properties and select Android Tab, Change Project Build Path to Google APIs.</p>
+</li>
+
+<li>
+<p>Create a new Android Application Project</p>
+</li>
+
+<li>
+<p>In your AndroidManifest.xml, go to the application tag and add <code>android:theme=&quot;@style/Theme.GreenDroid&quot;</code> as a new attribute.</p>
+</li>
+
+<li>
+<p>create you activity inheritiing from GDActivity and Put this code in you activity</p>
+
+<pre><code>protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setActionBarContentView(R.layout.main);
+}</code></pre>
+</li>
+
+<li>
+<p>Run it !</p>
+</li>
+</ol></html>
+</body>

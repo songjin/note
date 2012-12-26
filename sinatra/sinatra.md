@@ -44,3 +44,75 @@ HTTP是超文本传输协议（HTTP，HyperText Transfer Protocol，最初是设
 
 
 - http://www.infoq.com/cn/articles/sinatra-intro
+
+
+
+
+
+
+Ruby主流的ORM库有Sequel，DataMapper和来自Rails的ActiveRecord
+
+
+DataMapper
+Sequel
+
+<http://bytesofpi.com/post/23663592388/up-and-running-with-sinatra-and-activerecord>
+
+<http://www.brandon-harris.com/sinatra/2010/03/28/simple-sinatra-activerecord-app-with-migrations.html>
+
+
+<http://ruby.about.com/od/sinatra/a/datamapper.htm>
+
+[datamapper入门](http://ruby-china.org/topics/6501)
+
+
+
+	require 'dm-core'
+	require 'dm-migrations'
+	
+	# Open the database test1.db
+	DataMapper.setup :default, "sqlite3://#{Dir.pwd}/test1.db" 
+	
+	# Define the Person model
+	class Person
+	  include DataMapper::Resource
+	
+	  property :firstname, String
+	  property :lastname, String
+	  property :email, String, :key => true
+	end
+	
+	# Automatically create the tables if they don't exist
+	DataMapper.auto_migrate!
+	
+	# Create a new record
+	p = Person.new
+	p.attributes = {
+	  :firstname => 'John',
+	  :lastname => 'Doe',
+	  :email => 'john.doe@email.com'
+	}
+	
+	# Save it to the database
+	p.save
+	
+	# Make some changes to the object
+	p.lastname = 'Smith'
+	p.save
+	
+	# Create a new object and destroy it
+	p2 = Person.new
+	p2.email = 'testing@testing.com'
+	p2.save
+	
+	p2.destroy
+	
+	# Find a record from the database
+	p3 = Person.get('john.doe@email.com')
+	puts p3.inspect # => #<Person @firstname="John" @lastname="Smith" @email="john.doe@email.com">
+	
+	
+#　模板语言
+
+[HAML](http://haml.info)
+[Slim](http://slim-lang.com)

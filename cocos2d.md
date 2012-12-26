@@ -1,0 +1,1 @@
+[手势库](http://www.supersuraccoon-cocos2d.com/zh/2012/11/14/introduction-to-some-great-ios-gesture-recognition-libraries-cocos2d/ )

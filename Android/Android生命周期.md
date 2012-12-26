@@ -1,0 +1,26 @@
+<http://blog.csdn.net/mylzc/article/details/6738800>
+
+
+1、系统（framework）在启动Activity的时候会初始化一些运行时变量，当初始化完成后，会调用Activity的onCreate(Bundle savedInstanceState),相当于他告知Activity：“我帮你搭建好环境了，你现在开始创建吧”
+
+onCreate(Bundle savedInstanceState):从log信息中我们得知，Activity启动的时候首先会调用onCreate()方法，这时候，Activity被告知要做一些初始化的工作，在这个方法里，Activity的UI元素还没绘到界面上，我们需要调用setContentView()来设定Activity的布局，另外，我们经常做的事情就是使用findViewById()初始化类中的Ui成员。
+
+onCreate(Bundle savedInstanceState)中有一个参数savedInstanceState，是用来恢复活动状态的，具体的用法我们在场景二中会提到。
+
+2、当Activity创建完毕后，系统就急不及待要把Activity显示出来，在显示出来之前，他会问Activity:"你要显示出来了，你还要做些什么准备工作么？"，此时会调用onStart()函数
+
+Activity在将要显示出来之前被调用，如果你需要动态注册一个BroadcastReceiver，那么建议在这里进行注册。
+
+3、然后系统会让Activity显示出来（但也有可能被系统窗口阻挡），然后问Activity:"我尽力把你显示出来了，你有什么事没做的自己看着办吧"，此时调用onResume
+
+在这里可以开始动画，打开外部设备(camera等)注意这个方法并无意味着Activity是可见的，Activity还有可能被系统窗口遮挡（如：锁屏界面，输入法等），使用onWindowFocusChanged(boolean)来确认window是否可见
+
+4、用户按Back键后，系统会先暂停Activity，然后再销毁Activity，它相当于告知Activity：“我要暂停你了，你有什么要说的吗”，此时调用onPause
+
+当activity将要被遮挡时调用在此应该完成一些轻量级的数据持久化处理（因为只有此方法return后，新的activity才会被显示出来，如果被繁重的工作阻塞了ui线程，那么新的Activity将不会被显示出来）这里停止那些占用cpu时间的任务，如动画，camera等
+
+5、暂停之后系统就把Activity设为不可见，它告知Activity：“大家都看不到你了，还要说几句吗？”，此时调用onStop
+
+如果在onStart()中动态注册了一个BroadcastReceiver，那么就在onStop()处取消注册。如果使用了cursor，就在这里关闭cursor，释放资源
+
+6、系统准备销毁Activity，此时它对Activity说：“哈哈，你要挂了，有什么遗言就说吧”,此时调用onDestroy

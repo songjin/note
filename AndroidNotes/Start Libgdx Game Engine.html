@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<p><a href='http://libgdx.badlogicgames.com'>Libgdx</a> is a popular crossplatform game engine.</p>
+
+<p>Project Setup:</p>
+
+<ol>
+<li>
+<p>Downland files from <a href='http://code.google.com/p/libgdx/downloads/list'>http://code.google.com/p/libgdx/downloads/list</a></p>
+</li>
+
+<li>
+<p>Go to the project folder on the file system and create a subfolder named libs. From the nightly zip, place gdx-backend-android.jar and the armeabi and armeabi-v7a folders in the libs folder. In Eclipse, right click the project -&gt; Refresh. Right click again -&gt; Properties -&gt; Java Build Path -&gt; Libraries -&gt; Add JARs, select gdx-backend-android.jar and click OK.</p>
+</li>
+
+<li>
+<p>Create a Game</p>
+
+<p>Creating a game In your main project, create a new class: right click the project -&gt; New -&gt; Class. Name it &#8220;Game&#8221; and specify a package (eg, &#8220;com.gamename&#8221;). Next to Interfaces, click Add, choose ApplicationListener, and click OK. It will look like this:</p>
+
+<pre><code>import com.badlogic.gdx.ApplicationListener;
+
+public class Game implements ApplicationListener {
+        public void create () {
+        }
+
+        public void render () {
+        }
+
+        public void resize (int width, int height){
+        }
+
+        public void pause () {
+        }
+
+        public void resume () {
+        }
+
+        public void dispose () {
+        }
+	}</code></pre>
+</li>
+
+<li>
+<p>Running the game</p>
+</li>
+</ol>
+
+<p>Open the Activity class in the Android project that was automatically created and make it look like this:</p>
+
+<pre><code>	import com.badlogic.gdx.backends.android.AndroidApplication;
+	
+	public class AndroidGame extends AndroidApplication {
+	        public void onCreate (android.os.Bundle savedInstanceState) {
+	                super.onCreate(savedInstanceState);
+	                initialize(new Game(), false);
+	        }
+	}</code></pre>
+
+<p>And just Run it!</p>
+
+<p>More details see <a href='http://code.google.com/p/libgdx/wiki/ProjectSetup'>http://code.google.com/p/libgdx/wiki/ProjectSetup</a></p></html>
+</body>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
+<html>
+</html>
+<html>
+<body>
+<p>检测网络情况</p>
+
+<pre><code>public void myClickHandler(View view) {
+  
+    ConnectivityManager connMgr = (ConnectivityManager) 
+        getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+    if (networkInfo != null &amp;&amp; networkInfo.isConnected()) {
+        // fetch data
+    } else {
+        // display error
+    }
+    
+}
+
+
+		
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
+
+public class CheckNet {
+    public static boolean checkNetwork(Context context) {
+	try {
+	    ConnectivityManager connectivity = (ConnectivityManager) context
+		    .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+	    if (connectivity != null) {
+
+		NetworkInfo info = connectivity.getActiveNetworkInfo();
+
+		if (info == null || !info.isAvailable())
+		    return false;
+		else
+		    return true;
+	    }
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+	return false;
+    }
+}
+
+
+
+private static final String DEBUG_TAG = &quot;NetworkStatusExample&quot;;
+...      
+ConnectivityManager connMgr = (ConnectivityManager) 
+        getSystemService(Context.CONNECTIVITY_SERVICE);
+NetworkInfo networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI); 
+boolean isWifiConn = networkInfo.isConnected();
+networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+boolean isMobileConn = networkInfo.isConnected();
+Log.d(DEBUG_TAG, &quot;Wifi connected: &quot; + isWifiConn);
+Log.d(DEBUG_TAG, &quot;Mobile connected: &quot; + isMobileConn);
+
+
+
+
+public boolean isOnline() {
+    ConnectivityManager connMgr = (ConnectivityManager) 
+            getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+    return (networkInfo != null &amp;&amp; networkInfo.isConnected());
+}  </code></pre></html>
+</body>

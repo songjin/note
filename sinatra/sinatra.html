@@ -47,5 +47,65 @@ end</code></pre>
 
 <ul>
 <li>http://www.infoq.com/cn/articles/sinatra-intro</li>
-</ul></html>
+</ul>
+
+<p>Ruby主流的ORM库有Sequel，DataMapper和来自Rails的ActiveRecord</p>
+
+<p>DataMapper Sequel</p>
+
+<p><a href='http://bytesofpi.com/post/23663592388/up-and-running-with-sinatra-and-activerecord'>http://bytesofpi.com/post/23663592388/up-and-running-with-sinatra-and-activerecord</a></p>
+
+<p><a href='http://www.brandon-harris.com/sinatra/2010/03/28/simple-sinatra-activerecord-app-with-migrations.html'>http://www.brandon-harris.com/sinatra/2010/03/28/simple-sinatra-activerecord-app-with-migrations.html</a></p>
+
+<p><a href='http://ruby.about.com/od/sinatra/a/datamapper.htm'>http://ruby.about.com/od/sinatra/a/datamapper.htm</a></p>
+
+<p><a href='http://ruby-china.org/topics/6501'>datamapper入门</a></p>
+
+<pre><code>require &#39;dm-core&#39;
+require &#39;dm-migrations&#39;
+
+# Open the database test1.db
+DataMapper.setup :default, &quot;sqlite3://#{Dir.pwd}/test1.db&quot; 
+
+# Define the Person model
+class Person
+  include DataMapper::Resource
+
+  property :firstname, String
+  property :lastname, String
+  property :email, String, :key =&gt; true
+end
+
+# Automatically create the tables if they don&#39;t exist
+DataMapper.auto_migrate!
+
+# Create a new record
+p = Person.new
+p.attributes = {
+  :firstname =&gt; &#39;John&#39;,
+  :lastname =&gt; &#39;Doe&#39;,
+  :email =&gt; &#39;john.doe@email.com&#39;
+}
+
+# Save it to the database
+p.save
+
+# Make some changes to the object
+p.lastname = &#39;Smith&#39;
+p.save
+
+# Create a new object and destroy it
+p2 = Person.new
+p2.email = &#39;testing@testing.com&#39;
+p2.save
+
+p2.destroy
+
+# Find a record from the database
+p3 = Person.get(&#39;john.doe@email.com&#39;)
+puts p3.inspect # =&gt; #&lt;Person @firstname=&quot;John&quot; @lastname=&quot;Smith&quot; @email=&quot;john.doe@email.com&quot;&gt;</code></pre>
+
+<h1 id='id114'>　模板语言</h1>
+
+<p><a href='http://haml.info'>HAML</a> <a href='http://slim-lang.com'>Slim</a></p></html>
 </body>

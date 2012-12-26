@@ -12,3 +12,4 @@
 - https://devcenter.heroku.com
 - [Getting Started with iOS Mobile Development and a Sinatra API](https://devcenter.heroku.com/articles/getting-started-ios-development-sinatra-cedar)
 - http://www.ruanyifeng.com/blog/2011/08/list_of_cloud_platforms.html
+- <http://rdegges.com/heroku-isnt-for-idiots>

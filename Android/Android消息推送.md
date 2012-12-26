@@ -1,0 +1,34 @@
+AndroidPN
+
+
+Android froyo 之后，引入了 C2DM，基于XMPP 协议实现的推送机制。C2DM 的优点无需多言，但缺点也是显而易见：
+1. 需要google账号。这一点约束太大了，很多手机厂家把google Apps给阉割了。
+2. 国内服务不稳定，原因你懂得的。如果有能力在国外有服务器，可以很快的发送消息到C2DM 服务器，从国内post 数据到 Google server，几乎没响应。
+3. C2DM 仅支持 Android 2.2 以上
+
+C2DM 运行在系统级别上，系统内存少时不容易被kill。C2DM与Gmail、Gtalk等共用同一个连接，减少耗电。跟iOS不一样，Android支持App常驻进程，所以大家都不愿意用。现在一些恶意的Android软件，安装后后台开启一个服务，定时向用户PUSH垃圾广告，很邪恶。国内互联网公司都瞎折腾这样那样云，但就没有一家愿意开发和提供一个Google C2DM的墙内替代品。
+
+目前基于长连接push的开源软件有:
+
+AndroidPN
+
+AndroidPN 是一个基于XMPP协议的java开源Android push Notification 实现，包含server与client，server 使用SSH框架，默认后台使用jetty，数据库是hsqldb，该服务器端基本上是在openfire基础上修改实现的，据说微信在Android上的推送实现也是基于openfire，具体未详。官方上的版本已经很久没更新，而且还有一些bugs，比如：
+1. 当服务器端重启的时候,客户端就无法在连接到服务器.
+2. 不支持离线消息。
+3. 推送多条消息重复问题
+
+可以改造成tomcat版本，已经有很多网友在做这样的事。
+
+MQTT
+
+IBM 产品，使用php写的，据说外国网友在论坛上爆料，Facebook Android客户端的推送使用这个。
+
+没有条件自己搞 push 服务器的，可以使用第三方服务
+
+Urban Airship http://urbanairship.com/
+
+http://www.push-notification.org/
+
+http://www.android-push.com/
+
+据了解，钱方支付的 Android 客户端是使用 http://www.android-push.com/ 的服务。
