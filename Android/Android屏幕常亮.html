@@ -1,21 +1,28 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
-<body>
-<p>taaw.com归纳下在Android手机开发程序中控制屏幕长亮的方法。</p>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
 
-<p>首先Android长亮是有PowerManager下的类WakeLock对象管理的。以下是具体方法。 A、屏幕控制需要对应的权限permission声明</p>
-<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
-&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;</pre>
+<body>
+	<p>taaw.com归纳下在Android手机开发程序中控制屏幕长亮的方法。</p>
+
+<p>首先Android长亮是有PowerManager下的类WakeLock对象管理的。以下是具体方法。 
+A、屏幕控制需要对应的权限permission声明</p>
+
+<p><uses-permission android:name="android.permission.WAKE_LOCK" /></p>
+
 <p>B、启用屏幕长亮</p>
 
-<p>PowerManager manager = ((PowerManager)getSystemService(POWER_SERVICE)); WakeLock wakeLock = manager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK| PowerManager.ON_AFTER_RELEASE, &#8220;ATAAW&#8221;); wakeLock.acquire();</p>
+<p>PowerManager manager = ((PowerManager)getSystemService(POWER<em>SERVICE)); 
+WakeLock wakeLock = manager.newWakeLock(PowerManager.SCREEN</em>BRIGHT<em>WAKE</em>LOCK| PowerManager.ON<em>AFTER</em>RELEASE, &quot;ATAAW&quot;); 
+wakeLock.acquire();</p>
 
 <p>C、关闭屏幕长亮只需要将对象释放掉</p>
 
-<p>wakeLock.release();&#8221;&#8221;)&#8221;&#8221;</p></html>
+<p>wakeLock.release();&quot;&quot;)&quot;&quot;</p>
+
 </body>
+</html>
+

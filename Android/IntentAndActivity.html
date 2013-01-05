@@ -1,12 +1,12 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<pre><code>###　启动活动
+	<pre><code>###　启动活动
 
 Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(data));
 // data可以是http://也可以是tel://.如果定义的是tel://110就是给110打电话
@@ -14,7 +14,8 @@ startActivity(intent)
 
 
 
-### 监听按键</code></pre>
+### 监听按键
+</code></pre>
 
 <p>重载onKeyDown，　onKeyup方法</p>
 
@@ -22,20 +23,22 @@ startActivity(intent)
 public boolean onKeyDown(int keyCode, KeyEvent event) {
     // TODO Auto-generated method stub
     if (keyCode == KeyEvent.KEYCODE_BACK) {
-        
+
         return true;
     }
     return super.onKeyUp(keyCode, event);
-}</code></pre>
+}
+</code></pre>
 
 <p>API Level5以上提供专门的方法</p>
 
 <pre><code>@Override
 public void onBackPressed() {
         setTitle(&quot;OOXX&quot;);
-}</code></pre>
+}
+</code></pre>
 
-<h3 id='id19'>通过监听按键启动活动</h3>
+<h3>通过监听按键启动活动</h3>
 
 <pre><code>@Override
 public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -47,5 +50,9 @@ public boolean onKeyDown(int keyCode, KeyEvent event) {
         return true;
     }
     return super.onKeyDown(keyCode, event);
-}</code></pre></html>
+}
+</code></pre>
+
 </body>
+</html>
+

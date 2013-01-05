@@ -1,24 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<p>http://www.vogella.com/articles/AndroidListView/article.html</p>
+	<p><a href="http://www.vogella.com/articles/AndroidListView/article.html">http://www.vogella.com/articles/AndroidListView/article.html</a></p>
 
 <ul>
-<li>
-<p>ArrayAdapter can handle data based on Arrays or java.util.List.</p>
-</li>
-
-<li>
-<p>SimpleCursorAdapter can handle database related data. This description focuses on the non database case.</p>
-</li>
+<li><p>ArrayAdapter can handle data based on Arrays or java.util.List.</p></li>
+<li><p>SimpleCursorAdapter can handle database related data. This description focuses on the non database case.</p></li>
 </ul>
 
-<p>The Android platform provides default layouts for rows in ListViews. For example android.R.layout.simple_list_item1. By default ArrayAdapter uses the android.R.id.text1 ID, but you can define another one in the ArrayAdapter constructor.</p>
+<p>The Android platform provides default layouts for rows in ListViews. For example android.R.layout.simple<em>list</em>item1. By default ArrayAdapter uses the android.R.id.text1 ID, but you can define another one in the ArrayAdapter constructor.</p>
 
 <p>Layout</p>
 
@@ -34,7 +29,8 @@
         android:layout_height=&quot;wrap_content&quot; &gt;
     &lt;/ListView&gt;
 
-&lt;/LinearLayout&gt; </code></pre>
+&lt;/LinearLayout&gt; 
+</code></pre>
 
 <p>Activity</p>
 
@@ -51,7 +47,8 @@ ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,
   android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
 // Assign adapter to ListView
-listView.setAdapter(adapter); </code></pre>
+listView.setAdapter(adapter); 
+</code></pre>
 
 <p>listener</p>
 
@@ -63,7 +60,8 @@ listView.setAdapter(adapter); </code></pre>
       &quot;Click ListItem Number &quot; + position, Toast.LENGTH_LONG)
       .show();
   }
-}); </code></pre>
+}); 
+</code></pre>
 
 <p>自动义行</p>
 
@@ -105,18 +103,29 @@ public class MySimpleArrayAdapter extends ArrayAdapter&lt;String&gt; {
 
     return rowView;
   }
-} </code></pre>
+} 
+</code></pre>
 
 <p>listactivity</p>
 
 <p>package de.vogella.android.listactivity;</p>
 
-<p>import android.app.ListActivity; import android.os.Bundle; import android.widget.ArrayAdapter;</p>
+<p>import android.app.ListActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;</p>
 
-<p>public class MyListActivity extends ListActivity { public void onCreate(Bundle icicle) { super.onCreate(icicle); String<span /> values = new String<span /> { &#8220;Android&#8221;, &#8220;iPhone&#8221;, &#8220;WindowsMobile&#8221;, &#8220;Blackberry&#8221;, &#8220;WebOS&#8221;, &#8220;Ubuntu&#8221;, &#8220;Windows7&#8221;, &#8220;Max OS X&#8221;, &#8220;Linux&#8221;, &#8220;OS/2&#8221; }; ArrayAdapter<pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
-&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,
-        android.R.layout.simple_list_item_1, values);
+<p>public class MyListActivity extends ListActivity {
+  public void onCreate(Bundle icicle) {
+    super.onCreate(icicle);
+    String[] values = new String[] { &quot;Android&quot;, &quot;iPhone&quot;, &quot;WindowsMobile&quot;,
+        &quot;Blackberry&quot;, &quot;WebOS&quot;, &quot;Ubuntu&quot;, &quot;Windows7&quot;, &quot;Max OS X&quot;,
+        &quot;Linux&quot;, &quot;OS/2&quot; };
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        android.R.layout.simple<em>list</em>item_1, values);
     setListAdapter(adapter);
   }
-} </pre></p></html>
+} </p>
+
 </body>
+</html>
+

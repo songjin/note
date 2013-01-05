@@ -1,18 +1,21 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./style.css>
+</head>
+
 <body>
-<h2 id='redis'>什么是Redis</h2>
+	<h2>什么是Redis</h2>
 
 <p>Redis是一个开源的,使用ANSI C语言编写的，基于内存的Key-Value型数据库。</p>
 
-<p><a href='http://redis.io/'>官方网址</a> <a href='http://redis.readthedocs.org/en/latest/index.html'>Redis 命令参考</a> <span><a href='http://openmymind.net/2012/1/23/The-Little-Redis-Book/'>The-Little-Redis-Book</a> <span><a href='https://github.com/JasonLai256/the-little-redis-book/blob/master/cn/redis.md'>The-Little-Redis-Book 中文</a></span></span></p>
+<p><a href="http://redis.io/">官方网址</a>
+<a href="http://redis.readthedocs.org/en/latest/index.html">Redis 命令参考</a>
+[<a href="http://openmymind.net/2012/1/23/The-Little-Redis-Book/">The-Little-Redis-Book</a>
+[<a href="https://github.com/JasonLai256/the-little-redis-book/blob/master/cn/redis.md">The-Little-Redis-Book 中文</a></p>
 
-<h2 id='redis'>Redis的特点</h2>
+<h2>Redis的特点</h2>
 
 <p>Redis本质上是一个Key-Value类型的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。</p>
 
@@ -20,11 +23,11 @@
 
 <p>Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。</p>
 
-<h2 id='redis'>Redis安装</h2>
+<h2>Redis安装</h2>
 
 <p>就那么简单，几个命令，不用配置其他东西。</p>
 
-<pre><code>$ wget http://redis.googlecode.com/	files/redis-2.4.2.tar.gz
+<pre><code>$ wget http://redis.googlecode.com/ files/redis-2.4.2.tar.gz
 $ tar xzf redis-2.4.2.tar.gz
 $ cd redis-2.4.2
 $ make 
@@ -36,15 +39,17 @@ $ src/redis-cli
 redis&gt; set foo bar
 OK
 redis&gt; get foo
-&quot;bar&quot;</code></pre>
+&quot;bar&quot;
+</code></pre>
 
-<h2 id='rubyredis'>在Ruby中使用Redis</h2>
+<h2>在Ruby中使用Redis</h2>
 
-<p><a href='http://rubydoc.info/gems/redis/3.0.1/frames'>redis gem的rdoc</a></p>
+<p><a href="http://rubydoc.info/gems/redis/3.0.1/frames">redis gem的rdoc</a></p>
 
 <p>首先，安装Redis的gem</p>
 
-<pre><code>gem install redis</code></pre>
+<pre><code>gem install redis
+</code></pre>
 
 <p>然后就可以使用了</p>
 
@@ -52,7 +57,11 @@ redis&gt; get foo
 
 redis = Redis.new(host: &#39;localhost&#39;, port: 6379)
 redis.set(&#39;Time&#39;, Time.now)
-puts redis.get(&#39;Time&#39;)</code></pre>
+puts redis.get(&#39;Time&#39;)
+</code></pre>
 
-<h2 id='id112'>资源</h2></html>
+<h2>资源</h2>
+
 </body>
+</html>
+

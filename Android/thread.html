@@ -1,31 +1,30 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<h2 id='id23'>多线程</h2>
+	<h2>多线程</h2>
 
 <pre><code>class getImage extends AsyncTask&lt;String, String, String&gt; {
 
-	@Override
-	protected String doInBackground(String... params) {
-	}
-}</code></pre>
+    @Override
+    protected String doInBackground(String... params) {
+    }
+}
+</code></pre>
 
 <ul>
-<li>doInBackgroud 后台</li>
-
+<li>doInBackgroud  后台</li>
 <li>onProgressUpdate 更新状态</li>
+<li><p>onPostExecute 执行完毕触发</p>
 
-<li>onPostExecute 执行完毕触发</li>
+<p>调用new getImage.execute(args)触发</p></li>
 </ul>
 
-<p>调用new getImage.execute(args)触发</p>
-
-<h3 id='id24'>下载文件</h3>
+<h3>下载文件</h3>
 
 <pre><code>package com.example.teset;
 
@@ -66,13 +65,13 @@ private static final String DL_ID=&quot;Downland&quot;;
 public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    
+
     imageView = new ImageView(this);
     setContentView(imageView);
-    
+
     prefs = PreferenceManager.getDefaultSharedPreferences(this);
     dm = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
-        
+
 }
 
 
@@ -81,32 +80,32 @@ public void onCreate(Bundle savedInstanceState) {
 
 @Override
 protected void onResume() {
-	// TODO Auto-generated method stub
-	super.onResume();
-	if (!prefs.contains(DL_ID)) {
-		//Start Downland
-		Uri resource = Uri.parse(&quot;http://bigfoto.com/dog-animal.jpg&quot;);
-		DownloadManager.Request request = new DownloadManager.Request(resource);
-		request.setAllowedNetworkTypes(Request.NETWORK_MOBILE | Request.NETWORK_WIFI );
-		request.setAllowedOverRoaming(false);
-		request.setTitle(&quot;DownLand Sample&quot;); //Display in the Notification
-		/* request.setTitle
-		 *        .setDescription
-		 *   显示通知栏的信息
-		 */
-		long id = dm.enqueue(request); // Save ID
-		prefs.edit().putLong(DL_ID, id).commit(); 
-		/*
-		 * 默认存在缓存中。
-		 * Request.setDestination()指定保存在外部存储上的URL
-		 * Request.setDestinationInExternalFilesDir()将外部存储上隐藏的文件夹指定为下载位置
-		 * Request.setDestinationInExternalPublicDir()外部。。。共享。。。指定为下载位置
-		 */
-	}else {
-		// Hava start Downland, to check the status
-		queryDownLandStatus();
-	}
-	registerReceiver(receiver,  new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+    // TODO Auto-generated method stub
+    super.onResume();
+    if (!prefs.contains(DL_ID)) {
+        //Start Downland
+        Uri resource = Uri.parse(&quot;http://bigfoto.com/dog-animal.jpg&quot;);
+        DownloadManager.Request request = new DownloadManager.Request(resource);
+        request.setAllowedNetworkTypes(Request.NETWORK_MOBILE | Request.NETWORK_WIFI );
+        request.setAllowedOverRoaming(false);
+        request.setTitle(&quot;DownLand Sample&quot;); //Display in the Notification
+        /* request.setTitle
+         *        .setDescription
+         *   显示通知栏的信息
+         */
+        long id = dm.enqueue(request); // Save ID
+        prefs.edit().putLong(DL_ID, id).commit(); 
+        /*
+         * 默认存在缓存中。
+         * Request.setDestination()指定保存在外部存储上的URL
+         * Request.setDestinationInExternalFilesDir()将外部存储上隐藏的文件夹指定为下载位置
+         * Request.setDestinationInExternalPublicDir()外部。。。共享。。。指定为下载位置
+         */
+    }else {
+        // Hava start Downland, to check the status
+        queryDownLandStatus();
+    }
+    registerReceiver(receiver,  new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 }
 
 
@@ -115,46 +114,50 @@ protected void onResume() {
 
 @Override
 protected void onPause() {
-	// TODO Auto-generated method stub
-	super.onPause();
-	unregisterReceiver(receiver);
+    // TODO Auto-generated method stub
+    super.onPause();
+    unregisterReceiver(receiver);
 }
 
 private BroadcastReceiver receiver = new BroadcastReceiver() {
-	@Override
-	public void onReceive(Context context, Intent intent) {
-		queryDownLandStatus();
-	}
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        queryDownLandStatus();
+    }
 };
 
 private void queryDownLandStatus() {
-	DownloadManager.Query query = new DownloadManager.Query();
-	query.setFilterById(prefs.getLong(DL_ID, 0));
-	Cursor c = dm.query(query);
-	if (c.moveToFirst()) {
-		int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
-		switch (status) {		
-		case DownloadManager.STATUS_PAUSED:
-		case DownloadManager.STATUS_PENDING:
-		case DownloadManager.STATUS_RUNNING:
-			break; // DownLanding , need not do anything
-		case DownloadManager.STATUS_SUCCESSFUL:
-			try {  // Finish, Display the picture
-				ParcelFileDescriptor file = dm.openDownloadedFile(prefs.getLong(DL_ID, 0));
-				FileInputStream fis = new ParcelFileDescriptor.AutoCloseInputStream(file);
-				imageView.setImageBitmap(BitmapFactory.decodeStream(fis));
-			}catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			
-			break;
-		case DownloadManager.STATUS_FAILED:
-			// ReDownland
-			dm.remove(prefs.getLong(DL_ID, 0));
-			prefs.edit().clear().commit();
-			break;
-		}
-	}
-}</code></pre></html>
+    DownloadManager.Query query = new DownloadManager.Query();
+    query.setFilterById(prefs.getLong(DL_ID, 0));
+    Cursor c = dm.query(query);
+    if (c.moveToFirst()) {
+        int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+        switch (status) {       
+        case DownloadManager.STATUS_PAUSED:
+        case DownloadManager.STATUS_PENDING:
+        case DownloadManager.STATUS_RUNNING:
+            break; // DownLanding , need not do anything
+        case DownloadManager.STATUS_SUCCESSFUL:
+            try {  // Finish, Display the picture
+                ParcelFileDescriptor file = dm.openDownloadedFile(prefs.getLong(DL_ID, 0));
+                FileInputStream fis = new ParcelFileDescriptor.AutoCloseInputStream(file);
+                imageView.setImageBitmap(BitmapFactory.decodeStream(fis));
+            }catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+            break;
+        case DownloadManager.STATUS_FAILED:
+            // ReDownland
+            dm.remove(prefs.getLong(DL_ID, 0));
+            prefs.edit().clear().commit();
+            break;
+        }
+    }
+}
+</code></pre>
+
 </body>
+</html>
+

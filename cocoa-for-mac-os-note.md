@@ -41,16 +41,24 @@ What makes the method so long-winded is that the key-value coding methods work w
 
 P93
 
-There are two other solutions that would work. First, you could use key-value coding:P105
-To remove a key equivalent, click the X button at the right-hand side of the text field.
-翻译是：单击文本框右边的X按钮，删除key　equivalent 
+There are two other solutions that would work. First, you could use key-value coding:
 
-明明是要想删除key　equivalent才点击的好不好！！！        
-	代码….        Or you could use the accessor method to change fido:
-明明是两种方法，可是第二句翻译成
-	再次，使用accessor方法来改变fido的值
-再次到底是什么意思……
-
+P105
+To remove a key equivalent, click the X button at the right-hand side of the text field.
+翻译是：单击文本框右边的X按钮，删除key　equivalent 
+
+明明是要想删除key　equivalent才点击的好不好！！！
+        
+	代码….
+        
+Or you could use the accessor method to change fido:
+
+明明是两种方法，可是第二句翻译成
+
+	再次，使用accessor方法来改变fido的值
+
+再次到底是什么意思……
+
 翻译排版吐槽
 
 虽然和原文一样，需要读者修改或者添加的代码用黑体表示，确实方便读者，但是，国内翻译版的黑体是非等宽字体的…

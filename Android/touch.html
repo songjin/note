@@ -1,13 +1,13 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<pre><code>public class MainActivity extends Activity implements OnTouchListener{
-    
+	<pre><code>public class MainActivity extends Activity implements OnTouchListener{
+
     StringBuilder builder = new StringBuilder();
     TextView textView;
     /** Called when the activity is first created. */
@@ -21,8 +21,8 @@
         setContentView(textView);
         //setContentView(R.layout.activity_main); 
     }
-    
-    
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -51,5 +51,9 @@
         textView.setText(text);
         return true;
     }
-}</code></pre></html>
+}
+</code></pre>
+
 </body>
+</html>
+

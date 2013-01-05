@@ -1,16 +1,17 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<pre><code> Intent intent = new Intent(&quot;android.provider.Telephony.SMS_RECEIVED&quot;);
+	<pre><code> Intent intent = new Intent(&quot;android.provider.Telephony.SMS_RECEIVED&quot;);
  List&lt;ResolveInfo&gt; infos = getPackageManager().queryBroadcastReceivers(intent, 0);
  for (ResolveInfo info : infos) {
      Log.d(&quot;HELLO&quot;,&quot;Receiver name:&quot; + info.activityInfo.name + &quot;; priority=&quot; + info.priority);
- }</code></pre>
+ }
+</code></pre>
 
 <p>输出日志：</p>
 
@@ -21,11 +22,17 @@
 12-18 20:45:58.077: D/HELLO(4714): Receiver name:com.OnTheWay2.MyReceiver; priority=2147483647
 12-18 20:45:58.077: D/HELLO(4714): Receiver name:info.linxiangyu.autosms.SMSReceiver; priority=2147483647
 12-18 20:45:58.077: D/HELLO(4714): Receiver name:com.ti.bluetooth.map.SmsEventReceiver; priority=0
-12-18 20:45:58.077: D/HELLO(4714): Receiver name:com.android.mms.transaction.PrivilegedSmsReceiver; priority=0			
+12-18 20:45:58.077: D/HELLO(4714): Receiver name:com.android.mms.transaction.PrivilegedSmsReceiver; priority=0          
 12-18 20:45:58.077: D/HELLO(4714): Receiver name:com.htc.usage.receiver.MessageReceiver; priority=0
-12-18 20:45:58.077: D/HELLO(4714): Receiver name:net.hidroid.hinet.receiver.SmsReceiver; priority=0</code></pre>
+12-18 20:45:58.077: D/HELLO(4714): Receiver name:net.hidroid.hinet.receiver.SmsReceiver; priority=0
+</code></pre>
 
-<p>reciver里面写一个 abortBroadcast();// 中止发送 就能终止发送</p>
+<p>reciver里面写一个
+abortBroadcast();// 中止发送
+就能终止发送</p>
 
-<p>拦截<a href='http://www.eoeandroid.com/thread-148381-1-1.html'>http://www.eoeandroid.com/thread-148381-1-1.html</a></p></html>
+<p>拦截<a href="http://www.eoeandroid.com/thread-148381-1-1.html">http://www.eoeandroid.com/thread-148381-1-1.html</a></p>
+
 </body>
+</html>
+

@@ -1,91 +1,97 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./style.css>
+</head>
+
 <body>
-<h2 id='id55'>框架</h2>
+	<h2>框架</h2>
 
-<p>PHP入门门槛低，框架一堆堆。原因分析：http://www.iteye.com/topic/1071177</p>
+<p>PHP入门门槛低，框架一堆堆。原因分析：<a href="http://www.iteye.com/topic/1071177">http://www.iteye.com/topic/1071177</a></p>
 
-<h3 id='id56'>框架比较</h3>
-
-<ul>
-<li>http://www.cnbeta.com/articles/190452.htm</li>
-
-<li>http://www.zhihu.com/question/19611667</li>
-</ul>
-
-<h3 id='zend'>Zend</h3>
-
-<p><a href='http://framework.zend.com'>Zend Framewrok</a></p>
-
-<p><a href='http://phpeye.com/zf/index.html'>Zend Framework手册 中文版</a></p>
-
-<h3 id='ci'>CI</h3>
+<h3>框架比较</h3>
 
 <ul>
-<li>
-<p>http://codeigniter.org.cn</p>
-</li>
-
-<li>
-<p>PHP 敏捷开发框架 CodeIgniter - 快速 Web 应用开发详解</p>
-</li>
-
-<li>
-<p><a href='http://www.amazon.com/CodeIgniter-Rapid-PHP-Application-Development/dp/1847191746'>CodeIgniter for Rapid PHP Application Development</a></p>
-</li>
+<li><a href="http://www.cnbeta.com/articles/190452.htm">http://www.cnbeta.com/articles/190452.htm</a></li>
+<li><a href="http://www.zhihu.com/question/19611667">http://www.zhihu.com/question/19611667</a></li>
 </ul>
 
-<h3 id='thinkphp'>ThinkPHP</h3>
+<h3>Zend</h3>
 
-<p>国产框架 http://www.thinkphp.cn</p>
+<p><a href="http://framework.zend.com">Zend Framewrok</a></p>
 
-<h3 id='cakephp'>CakePHP</h3>
+<p><a href="http://phpeye.com/zf/index.html">Zend Framework手册 中文版</a></p>
 
-<p>据说最像Rails http://cakephp.org</p>
+<h3>CI</h3>
 
-<h3 id='symfony2'>symfony2</h3>
+<ul>
+<li><p><a href="http://codeigniter.org.cn">http://codeigniter.org.cn</a></p></li>
+<li><p>PHP 敏捷开发框架 CodeIgniter - 快速 Web 应用开发详解</p></li>
+<li><p><a href="http://www.amazon.com/CodeIgniter-Rapid-PHP-Application-Development/dp/1847191746">CodeIgniter for Rapid PHP Application Development</a></p></li>
+</ul>
 
-<h2 id='id57'>第一印象</h2>
-<?php ?>
+<h3>ThinkPHP</h3>
+
+<p>国产框架 <a href="http://www.thinkphp.cn">http://www.thinkphp.cn</a></p>
+
+<h3>CakePHP</h3>
+
+<p>据说最像Rails <a href="http://cakephp.org">http://cakephp.org</a></p>
+
+<h3>symfony2</h3>
+
+<h2>第一印象</h2>
+
+<p>&lt;?php</p>
+
+<p>?&gt;</p>
+
 <p>需要加分号</p>
 
-<h2 id='id58'>类型</h2>
+<h2>类型</h2>
 
-<h3 id='id59'>基础类型</h3>
+<h3>基础类型</h3>
 
 <p>四种基础类型bool,int,float,string</p>
 
-<p>boolean型：FALSE = FALSE和0，0.0，NULL</p>
+<p>boolean型：FALSE =  FALSE和0，0.0，NULL</p>
 
 <p>php没有整除，需要round()或者类型转换(int)</p>
 
-<h3 id='string'>String:</h3>
+<h3>String:</h3>
 
-<p>- 单引号，输出原始的 - &#171;&lt;&#8217;SIGN&#8217; SIGN - 双引号里面的会被转义 - &#171;</p>
+<ul>
+<li>单引号，输出原始的</li>
+<li>&lt;&lt;&lt;&#39;SIGN&#39; SIGN</li>
+<li>双引号里面的会被转义</li>
+<li>&lt;&lt;&lt;SIGN  SIGN </li>
+</ul>
 
 <p>后两种里面的变量会被求值</p>
 
-<h3 id='id60'>数组</h3>
+<h3>数组</h3>
 
-<p>array( key =&gt; value , &#8230; )</p>
+<p>array(  key =&gt;  value
+     , ...
+     )</p>
 
-<h3 id='id61'>对象</h3>
-<?php class foo
+<h3>对象</h3>
+
+<p>&lt;?php
+class foo
 {
     function do_foo()
     {
-        echo "Doing foo."; 
+        echo &quot;Doing foo.&quot;; 
     }
-}
+}</p>
 
-$bar = new foo;
-$bar->do_foo();?>
-<h2 id='id62'>变量</h2>
+<p>$bar = new foo;
+$bar-&gt;do_foo();
+?&gt;</p>
+
+<h2>变量</h2>
 
 <p>引用赋值</p>
 
@@ -95,11 +101,15 @@ $bar->do_foo();?>
 
 <p>变量的作用域在其上下文环境</p>
 
-<p>global 关键字或者$GLOBALS<span />数组可以显示声明全局变量</p>
+<p>global 关键字或者$GLOBALS[]数组可以显示声明全局变量</p>
 
 <p>static 关键字可以声明静态变量。其值在其作用域内不会丢失</p>
 
-<p>可变变量： $a = &#8216;hello&#8217;; $$a = &#8216;world&#8217;; 这时候$a = &#8216;hello&#8217; $hello = &#8216;world&#8217;</p>
+<p>可变变量：
+$a = &#39;hello&#39;;
+$$a = &#39;world&#39;;
+这时候$a = &#39;hello&#39;
+$hello = &#39;world&#39;</p>
 
 <p>PHP之外的变量</p>
 
@@ -110,14 +120,15 @@ $bar->do_foo();?>
 &lt;/form&gt;
 
 
-&lt;?php</code></pre>
+&lt;?php
+</code></pre>
 
 <p>在PHP中显示</p>
 
 <pre><code>// 自 PHP 4.1.0 起可用
    echo $_POST[&#39;username&#39;];
    echo $_REQUEST[&#39;username&#39;];
-   
+
    import_request_variables(&#39;p&#39;, &#39;p_&#39;);
    echo $p_username;
 // PHP 6以后将无效。自 PHP 5.0.0 起，这些较长的预定义变量
@@ -130,19 +141,23 @@ $bar->do_foo();?>
 // 不提倡使用/依赖此种方法。
 
    echo $username;
-?&gt;</code></pre>
+?&gt;
+</code></pre>
 
-<p>define(&#8220;name&#8221;,&#8221;something&#8221;)可以定义常量</p>
+<p>define(&quot;name&quot;,&quot;something&quot;)可以定义常量</p>
 
 <p>预定义常量</p>
 
-<pre><code>__LINE__	 文件中的当前行号。
-__FILE__	 文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。自 PHP 4.0.2 起，__FILE__ 总是包含一个绝对路径（如果是符号连接，则是解析后的绝对路径），而在此之前的版本有时会包含一个相对路径。
-__DIR__	 文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。它等价于 dirname(__FILE__)。除非是根目录，否则目录中名不包括末尾的斜杠。（PHP 5.3.0中新增） =
-__FUNCTION__	 函数名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该函数被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。
-__CLASS__	 类的名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该类被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。
-__METHOD__	 类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）。
-__NAMESPACE__	 当前命名空间的名称（大小写敏感）。这个常量是在编译时定义的（PHP 5.3.0 新增）</code></pre>
+<pre><code>__LINE__     文件中的当前行号。
+__FILE__     文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。自 PHP 4.0.2 起，__FILE__ 总是包含一个绝对路径（如果是符号连接，则是解析后的绝对路径），而在此之前的版本有时会包含一个相对路径。
+__DIR__  文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。它等价于 dirname(__FILE__)。除非是根目录，否则目录中名不包括末尾的斜杠。（PHP 5.3.0中新增） =
+__FUNCTION__     函数名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该函数被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。
+__CLASS__    类的名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该类被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。
+__METHOD__   类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）。
+__NAMESPACE__    当前命名空间的名称（大小写敏感）。这个常量是在编译时定义的（PHP 5.3.0 新增）
+</code></pre>
+
+<p>===类型和对象一致的时候才True，==会自动转换类型，有点像JavaScript</p>
 
 <p>错误控制运算符：@expression 中expression产生的错误会被忽略</p>
 
@@ -150,45 +165,84 @@ __NAMESPACE__	 当前命名空间的名称（大小写敏感）。这个常量�
 
 <p>检测对象类型instanceof</p>
 
-<h2 id='id63'>控制流</h2>
+<h2>控制流</h2>
 
-<p>elseif === else if</p>
+<p>elseif === else if </p>
 
-<p>if ($a == 5): echo &#8220;a equals 5&#8221;; echo &#8221;&#8230;&#8221;; elseif ($a == 6): echo &#8220;a equals 6&#8221;; echo &#8220;!!!&#8221;; else: echo &#8220;a is neither 5 nor 6&#8221;; endif;</p>
+<p>if ($a == 5):
+    echo &quot;a equals 5&quot;;
+    echo &quot;...&quot;;
+elseif ($a == 6):
+    echo &quot;a equals 6&quot;;
+    echo &quot;!!!&quot;;
+else:
+    echo &quot;a is neither 5 nor 6&quot;;
+endif;</p>
 
-<p>while ($i &lt;= 10): print $i; $i++; endwhile;</p>
+<p>while ($i &lt;= 10):
+    print $i;
+    $i++;
+endwhile;</p>
 
-<p>for (expr1; expr2; expr3): statement; &#8230; endfor;</p>
+<p>for (expr1; expr2; expr3):
+    statement;
+    ...
+endfor;</p>
 
-<p>$arr = array(1, 2, 3, 4); foreach ($arr as &amp;$value) { $value = $value * 2; } //</p>
+<p>$arr = array(1, 2, 3, 4);
+foreach ($arr as &amp;$value) {
+    $value = $value * 2;
+}
+//</p>
 
 <p>break后面加数字表示跳出几重循环</p>
 
-<p>$i = 0; while (++$i) { switch ($i) { case 5: echo &#8220;At 5<br />\n&#8221;; break 1; /* 只退出 switch. <em>/ case 10: echo &#8220;At 10; quitting<br />\n&#8221;; break 2; /</em> 退出 switch 和 while 循环 <em>/ default: break; } }</em></p>
+<p>$i = 0;
+while (++$i) {
+    switch ($i) {
+    case 5:
+        echo &quot;At 5<br />\n&quot;;
+        break 1;  /* 只退出 switch. <em>/
+    case 10:
+        echo &quot;At 10; quitting<br />\n&quot;;
+        break 2;  /</em> 退出 switch 和 while 循环 */
+    default:
+        break;
+    }
+}</p>
 
 <p>continue后面也可以加数字</p>
 
 <p>declare(ticks=N) 每N条低级语句执行之后就会执行declare语句块的指令</p>
 
-<p>declare(ticks=2) { for ($x = 1; $x &lt; 50; ++$x) { echo similar_text(md5($x), md5($x<em>$x)), &#8221;<br />;&#8221;; } }</em></p>
+<p>declare(ticks=2) {
+    for ($x = 1; $x &lt; 50; ++$x) {
+        echo similar_text(md5($x), md5($x*$x)), &quot;<br />;&quot;;
+    }
+}</p>
 
 <p>require和include都是包含文件，如果文件出错require停止执行而include继续</p>
 
-<p>require_once()和include_once作用相同，但是不会重复包含</p>
+<p>require<em>once()和include</em>once作用相同，但是不会重复包含</p>
 
-<h2 id='id64'>函数</h2>
+<h2>函数</h2>
 
-<p>function foo($arg_1, $arg_2, &#8230;, $arg_n) { echo &#8220;Example function.\n&#8221;; return $retval; }</p>
+<p>function foo($arg<em>1, $arg</em>2, ..., $arg_n)
+{
+    echo &quot;Example function.\n&quot;;
+    return $retval;
+}</p>
 
 <p>所有的函数和类都有全局作用域</p>
 
 <p>通过引用传递参数</p>
 
-<p>function add_some_extra(&amp;$string)</p>
+<p>function add<em>some</em>extra(&amp;$string)</p>
 
 <p>指定默认参数的值</p>
 
-<pre><code>function makecoffee($type = &quot;cappuccino&quot;)</code></pre>
+<pre><code>function makecoffee($type = &quot;cappuccino&quot;)
+</code></pre>
 
 <p>从函数返回一个引用</p>
 
@@ -199,7 +253,8 @@ function &amp;returns_reference()
 }
 
 $newref =&amp; returns_reference();
-?&gt;</code></pre>
+?&gt;
+</code></pre>
 
 <p>变量可以作为函数或类</p>
 
@@ -208,19 +263,21 @@ $func();        // This calls foo()
 
 $foo = new Foo();
 $funcname = &quot;Variable&quot;;
-$foo-&gt;$funcname();   // This calls $foo-&gt;Variable()</code></pre>
+$foo-&gt;$funcname();   // This calls $foo-&gt;Variable()
+</code></pre>
 
 <p>PHP也支持匿名函数</p>
 
-<h2 id='id65'>面向对象</h2>
+<h2>面向对象</h2>
 
 <p>extends继承</p>
 
 <p>$this</p>
 
-<p>const 声明类常量 Class::constName调用</p>
+<p>const 声明类常量
+Class::constName调用</p>
 
-<p><strong>autoload 函数，它会在试图使用尚未被定义的类时自动调用。</strong></p>
+<p>__autoload 函数，它会在试图使用尚未被定义的类时自动调用。</p>
 
 <pre><code>&lt;?php
 function __autoload($class_name) {
@@ -229,18 +286,20 @@ function __autoload($class_name) {
 
 $obj  = new MyClass1();
 $obj2 = new MyClass2();
-?&gt;</code></pre>
+?&gt;
+</code></pre>
 
 <p>构造函数与析构函数</p>
 
-<pre><code>	function __construct() {
+<pre><code>    function __construct() {
        print &quot;In constructor\n&quot;;
        $this-&gt;name = &quot;MyDestructableClass&quot;;
    }
 
    function __destruct() {
        print &quot;Destroying &quot; . $this-&gt;name . &quot;\n&quot;;
-   }</code></pre>
+   }
+</code></pre>
 
 <p>重载方法</p>
 
@@ -250,7 +309,8 @@ $obj2 = new MyClass2();
         // 但仍然可以调用已被覆盖的方法
         parent::myFunc();
         echo &quot;OtherClass::myFunc()\n&quot;;
-    }</code></pre>
+    }
+</code></pre>
 
 <p>和Java一样，有abstract，static，public，private，protected，interface声明</p>
 
@@ -267,24 +327,27 @@ public void __unset ( string $name )
 当对未定义的变量调用isset() 或 empty()时，__isset() 会被调用。
 
 当对未定义的变量调用unset()时，__unset() 会被调用。
-	
+
 public mixed __call ( string $name , array $arguments )
 public static mixed __callStatic ( string $name , array $arguments )
 当调用一个不可访问方法（如未定义，或者不可见）时，__call() 会被调用。
 
 当在静态方法中调用一个不可访问方法（如未定义，或者不可见）时，__callStatic() 会被调用。
 
-$name参数是要调用的方法名称。$arguments参数是一个数组，包含着要传递给方法的参数。</code></pre>
+$name参数是要调用的方法名称。$arguments参数是一个数组，包含着要传递给方法的参数。
+</code></pre>
 
 <p>对象可以迭代自己的属性</p>
 
 <pre><code>foreach($this as $key =&gt; $value) {
        print &quot;$key =&gt; $value\n&quot;;
-   }</code></pre>
+   }
+</code></pre>
 
 <p>对象复制</p>
 
-<pre><code>$copy_of_object = clone $object;</code></pre>
+<pre><code>$copy_of_object = clone $object;
+</code></pre>
 
 <p>对象比较</p>
 
@@ -300,7 +363,7 @@ $name参数是要调用的方法名称。$arguments参数是一个数组，包�
   file_put_contents(&#39;store&#39;, $s);
 
 // page2.php:
-  
+
   // 要正确了解序列化，必须包含下面一个文件
   include(&quot;classa.inc&quot;);
 
@@ -308,21 +371,25 @@ $name参数是要调用的方法名称。$arguments参数是一个数组，包�
   $a = unserialize($s);
 
   // 现在可以使用对象$a里面的函数 show_one()
-  $a-&gt;show_one();</code></pre>
+  $a-&gt;show_one();
+</code></pre>
 
-<h2 id='id66'>命名空间</h2>
+<h2>命名空间</h2>
 
-<p>PHP 在 5.3.0 以后的版本开始支持命名空间。 只有三种类型的代码受命名空间的影响，它们是：类，函数和常量。 定义命名空间</p>
+<p>PHP 在 5.3.0 以后的版本开始支持命名空间。
+只有三种类型的代码受命名空间的影响，它们是：类，函数和常量。
+定义命名空间</p>
 
 <p>namespace MyProject;</p>
 
 <p>子命名空间</p>
 
-<p>namespace MyProject\Sub\Level; 同一文件可定义多命名空间，用namespace：或者namespace{}，但不推荐</p>
+<p>namespace MyProject\Sub\Level;
+同一文件可定义多命名空间，用namespace：或者namespace{}，但不推荐</p>
 
 <p>命名空间用\分割</p>
 
-<p>__ NAMESPACE__的值是包含当前命名空间名称的字符串</p>
+<p>__  NAMESPACE__的值是包含当前命名空间名称的字符串</p>
 
 <p>关键字 namespace 可用来显式访问当前命名空间或子命名空间中的元素。它等价于类中的 self 操作符。</p>
 
@@ -330,18 +397,22 @@ $name参数是要调用的方法名称。$arguments参数是一个数组，包�
 
 <p>use My\Full\Classname as Another;</p>
 
-<p>// 下面的例子与 use My\Full\NSname as NSname 相同 use My\Full\NSname;</p>
+<p>// 下面的例子与 use My\Full\NSname as NSname 相同
+use My\Full\NSname;</p>
 
 <p>在名称前加上前缀 \ 表示该名称是全局空间中的名称</p>
 
-<h3 id='id67'>异常处理</h3>
+<h3>异常处理</h3>
 
-<p>类似Java &lt;<span>CDATA<span><?php function inverse($x) {
-	    if (!$x) {
-	        throw new Exception('Division by zero.');
-	    }
-	    else return 1/$x;
-	}?></span></span></p>
+<p>类似Java
+    &lt;![CDATA[
+    &lt;?php
+    function inverse($x) {
+        if (!$x) {
+            throw new Exception(&#39;Division by zero.&#39;);
+        }
+        else return 1/$x;
+    }</p>
 
 <pre><code>try {
     echo inverse(5) . &quot;\n&quot;;
@@ -352,9 +423,10 @@ $name参数是要调用的方法名称。$arguments参数是一个数组，包�
 
 // Continue execution
 echo &#39;Hello World&#39;;
-?&gt;</code></pre>
+?&gt;
+</code></pre>
 
-<h3 id='id68'>引用</h3>
+<h3>引用</h3>
 
 <p>PHP 的引用允许用两个变量来指向同一个内容。意思是，当这样做时：</p>
 
@@ -363,21 +435,35 @@ $a =&amp; $b;
 ?&gt;
 
 unset可以取消引用和内容的绑定
-unset($a);</code></pre>
+unset($a);
+</code></pre>
 
 <p>在一个对象的方法中，$this 永远是调用它的对象的引用。</p>
 
-<h2 id='id69'>在所有作用域中均可以用的变量</h2>
+<h2>在所有作用域中均可以用的变量</h2>
 
-<p>$GLOBALS $_SERVER $_GET $_POST $_FILES $_COOKIE $_SESSION $_REQUEST $_ENV $_COOKIE $php_errormsg 前一个错误信息 $HTTP_RAW_POST_DATA — 原生POST数据 $http_response_header — HTTP 响应头</p>
+<p>$GLOBALS
+$<em>SERVER
+$</em>GET
+$<em>POST
+$</em>FILES
+$<em>COOKIE
+$</em>SESSION
+$<em>REQUEST
+$</em>ENV
+$<em>COOKIE
+$php</em>errormsg 前一个错误信息
+$HTTP<em>RAW</em>POST<em>DATA — 原生POST数据
+$http</em>response_header — HTTP 响应头</p>
 
-<h3 id='id70'>魔术引号</h3>
+<h3>魔术引号</h3>
 
 <p>魔术引号（Magic Quote）是一个自动将进入 PHP 脚本的数据进行转义的过程。最好在编码时不要转义而在运行时根据需要而转义。</p>
 
-<p>对初学者很有用 魔术引号在 PHP 中用来实现避免初学者的代码更危险。尽管 SQL 注入在魔术引号打开的情况下仍然有可能实现，但起码系统的风险减少很多了。 方便使用 当向数据库中插入数据时，魔术引号所做的就是自动对所有的 GET、POST、COOKIE 数据运用 addslashes() 函数。</p>
+<p>对初学者很有用 魔术引号在 PHP 中用来实现避免初学者的代码更危险。尽管 SQL 注入在魔术引号打开的情况下仍然有可能实现，但起码系统的风险减少很多了。
+方便使用 当向数据库中插入数据时，魔术引号所做的就是自动对所有的 GET、POST、COOKIE 数据运用 addslashes() 函数。</p>
 
-<h3 id='_php'>隐藏 PHP</h3>
+<h3>隐藏 PHP</h3>
 
 <p>一般而言，通过隐藏的手段提高安全性被认为是作用不大的做法。但某些情况下，尽可能的多增加一份安全性都是值得的。</p>
 
@@ -387,15 +473,23 @@ unset($a);</code></pre>
 
 <p>Example #1 把 PHP 隐藏为另一种语言</p>
 
-<h5 id='php'>使PHP看上去像其它的编程语言</h5>
+<h5>使PHP看上去像其它的编程语言</h5>
 
-<p>AddType application/x-httpd-php .asp .py .pl 或者干脆彻底隐藏它： Example #2 使用未知的扩展名作为 PHP 的扩展名</p>
+<p>AddType application/x-httpd-php .asp .py .pl
+或者干脆彻底隐藏它：
+Example #2 使用未知的扩展名作为 PHP 的扩展名</p>
 
-<h5 id='_php_'>使 PHP 看上去像未知的文件类型</h5>
+<h5>使 PHP 看上去像未知的文件类型</h5>
 
-<p>AddType application/x-httpd-php .bop .foo .133t 或者把它隐藏为 HTML 页面，这样所有的 HTML 文件都会通过 PHP 引擎，会为服务器增加一些负担： Example #3 用 HTML 做 PHP 的文件后缀</p>
+<p>AddType application/x-httpd-php .bop .foo .133t
+或者把它隐藏为 HTML 页面，这样所有的 HTML 文件都会通过 PHP 引擎，会为服务器增加一些负担：
+Example #3 用 HTML 做 PHP 的文件后缀</p>
 
-<h5 id='_php__html_'>使 PHP 代码看上去像 HTML 页面</h5>
+<h5>使 PHP 代码看上去像 HTML 页面</h5>
 
-<p>AddType application/x-httpd-php .htm .html 要让此方法生效，必须把 PHP 文件的扩展名改为以上的扩展名。这样就通过隐藏来提高了安全性，虽然防御能力很低而且有些缺点。</p></html>
+<p>AddType application/x-httpd-php .htm .html
+要让此方法生效，必须把 PHP 文件的扩展名改为以上的扩展名。这样就通过隐藏来提高了安全性，虽然防御能力很低而且有些缺点。</p>
+
 </body>
+</html>
+

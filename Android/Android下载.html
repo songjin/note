@@ -1,12 +1,12 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<p>链接网络</p>
+	<p>链接网络</p>
 
 <pre><code>// Given a URL, establishes an HttpUrlConnection and retrieves
 // the web page content as a InputStream, which it returns as
@@ -16,7 +16,7 @@ private String downloadUrl(String myurl) throws IOException {
     // Only display the first 500 characters of the retrieved
     // web page content.
     int len = 500;
-        
+
     try {
         URL url = new URL(myurl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -33,7 +33,7 @@ private String downloadUrl(String myurl) throws IOException {
         // Convert the InputStream into a string
         String contentAsString = readIt(is, len);
         return contentAsString;
-        
+
     // Makes sure that the InputStream is closed after the app is
     // finished using it.
     } finally {
@@ -41,7 +41,8 @@ private String downloadUrl(String myurl) throws IOException {
             is.close();
         } 
     }
-}</code></pre>
+}
+</code></pre>
 
 <p>从网络下载图片</p>
 
@@ -49,7 +50,8 @@ private String downloadUrl(String myurl) throws IOException {
 ...
 Bitmap bitmap = BitmapFactory.decodeStream(is);
 ImageView imageView = (ImageView) findViewById(R.id.image_view);
-imageView.setImageBitmap(bitmap);</code></pre>
+imageView.setImageBitmap(bitmap);
+</code></pre>
 
 <p>转换成字符串</p>
 
@@ -60,5 +62,9 @@ public String readIt(InputStream stream, int len) throws IOException, Unsupporte
     char[] buffer = new char[len];
     reader.read(buffer);
     return new String(buffer);
-}</code></pre></html>
+}
+</code></pre>
+
 </body>
+</html>
+

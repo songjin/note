@@ -1,23 +1,22 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<h2 id='forward'>Forward</h2>
+	<h2>Forward</h2>
 
 <p>Objective C是C语言严格意义上的超集。Obj－C面向对象的特性继承自Smalltalk，基于消息机制而不是常见的对象方法调用，所以和C++,Java等面向对象的方式有很大的区别。</p>
 
 <p>乔布斯被苹果扫地出门后创建的NEXTSTEP公司基于Obj-C搞了一套开发环境，后来被苹果收购之后，NEXTSTEP的人马和技术来到了苹果。原来的NEXTSTEP的框架该叫Cocoa。所以现在Cocoa框架里的东西，名字的前缀都是NS。</p>
 
-<h2 id='cocoa'>Cocoa</h2>
+<h2>Cocoa</h2>
 
-<p><a href='
-http://blog.devtang.com/blog/2012/08/05/use-modern-objective-c/'>Objective-C新特性</a></p>
+<p><a href="http://blog.devtang.com/blog/2012/08/05/use-modern-objective-c/">Objective-C新特性</a></p>
 
-<h2 id='id47'>面向对象</h2>
+<h2>面向对象</h2>
 
 <p>ObjC的实例变量只能通过方法访问。</p>
 
@@ -27,43 +26,45 @@ http://blog.devtang.com/blog/2012/08/05/use-modern-objective-c/'>Objective-C新�
 
 <p>id是可以指向任何对象的。ObjC是同态类型，对象类型也是可以动态绑定的。</p>
 
-<h2 id='id48'>内存管理</h2>
+<h2>内存管理</h2>
 
 <p>ObjC内存管理有三种形式</p>
 
 <ul>
 <li>Automatic Reference Counting (ARC)编译器自动计数对象的引用管理内存</li>
-
 <li>Manual reference counting 手动管理</li>
-
 <li>Garbage collection　垃圾收集。iOS设备不支持。</li>
 </ul>
 
-<h2 id='id49'>　消息传递</h2>
+<h2>　消息传递</h2>
 
 <p>ObjC的面向对象继承自SmallTalk，是比较独特的消息传递方式而不是常见的方法调用。消息传递的表达式是：</p>
 
-<pre><code>[receiver message];</code></pre>
+<pre><code>[receiver message];
+</code></pre>
 
 <p>消息接收者是对象，而消息是方法的名称和参数表.ObjC采用 named parameters，或者叫keyword arguments，即列出所有的参数名称和参数。</p>
 
-<pre><code>[myRectangle setOriginX: 30.0 y: 50.0]; </code></pre>
+<pre><code>[myRectangle setOriginX: 30.0 y: 50.0]; 
+</code></pre>
 
 <p>类似于下面的参数表是允许的，但是风格不推荐。</p>
 
-<pre><code>[myRectangle setOrigin:30.0 :50.0];</code></pre>
+<pre><code>[myRectangle setOrigin:30.0 :50.0];
+</code></pre>
 
 <p>ObjC也支持边长参数表</p>
 
-<pre><code>￼[receiver makeGroup:group, memberOne, memberTwo, memberThree];</code></pre>
+<pre><code>￼[receiver makeGroup:group, memberOne, memberTwo, memberThree];
+</code></pre>
 
 <p>方法调用可以嵌套，同时也可以用<code>.</code>操作符来访问可以访问的属性·</p>
 
-<h2 id='id50'>动态绑定</h2>
+<h2>动态绑定</h2>
 
 <p>方法调用和消息传递的区别在于，方法调用在编译的时候混合进代码里，而消息传递在运行的时候才确定</p>
 
-<h2 id='catalog'>Catalog</h2>
+<h2>Catalog</h2>
 
 <p>分类可以扩展类。</p>
 
@@ -72,57 +73,62 @@ http://blog.devtang.com/blog/2012/08/05/use-modern-objective-c/'>Objective-C新�
 
 
 @impelement ClassName (catalog)
-@end</code></pre>
+@end
+</code></pre>
 
 <p>分类不能添加实例变量</p>
 
 <p>Obj-C里面没有共有方法，可以通过定义一个分类，在分类中扩展的方法就是私有的。</p>
 
-<h2 id='protocol'>Protocol</h2>
+<h2>Protocol</h2>
 
 <p>协议类似于Java中的interface，是多个类共享的一个方法列表。</p>
 
-<pre><code>@interface  ClassName : SuperClass &lt;Protocol&gt;</code></pre>
+<pre><code>@interface  ClassName : SuperClass &lt;Protocol&gt;
+</code></pre>
 
 <p>然后在实现部分完成方法。</p>
 
 <p>多个协议可以用<code>,</code>分开。<code>&lt;protocol1 protocol2&gt;</code></p>
 
-<h2 id='dot'>dot操作符</h2>
+<h2>dot操作符</h2>
 
-<p>点操作符是<code>[]</code>的语法糖。</p>
+<p>点操作符是<code>[]</code>的语法糖。  </p>
 
-<h2 id='id51'>构造函数和析构函数</h2>
+<h2>构造函数和析构函数</h2>
 
 <p>构造函数要自己显示调用，析构函数<code>delloc</code>会在对象销毁的时候自动调用</p>
 
 <p>Obj-C规定在nil对象上调用方法是不执行任何操作，所以释放成员变量后将指针设为nil是一个好主意。</p>
 
-<h3 id='gc'>GC</h3>
+<h3>GC</h3>
 
 <p>在垃圾回收环境中不会用到dealloc方法，而是在对象销毁的时候自动调用finalize方法</p>
 
-<h3 id='strong_weak'>Strong 和　Weak</h3>
+<h3>Strong 和　Weak</h3>
 
-<h2 id='property'>property</h2>
+<h2>property</h2>
 
-<pre><code>@property (getter=getPubStr,setter=setPubStr:,nonatomic, retain) NSString* pubStr;</code></pre>
+<pre><code>@property (getter=getPubStr,setter=setPubStr:,nonatomic, retain) NSString* pubStr;
+</code></pre>
 
-<h3 id='assignretain__copy'>assign、retain 或者 copy</h3>
+<h3>assign、retain 或者 copy</h3>
 
 <p>用来定义该属性 setter 方法的赋值类型。assign是简单赋值；retain在赋值时会保留传入参数。copy是深拷贝。默认是assign。</p>
 
 <p>assign 就是简单的变量赋值,这种类型一般适用于 基础数据类型 （如:NSInteger）、C数据类型（如:int, float, double, char等）还有 委托（delegate）。</p>
 
-<pre><code>self.content = paramContent; </code></pre>
+<pre><code>self.content = paramContent; 
+</code></pre>
 
 <p>使用retain的话，此属性在赋值的时候，先release之前的值，然后再赋新值给属性，引用再加1。说的更彻底一点儿就是它只是指针之间的浅复制，将参数的引用release掉，让属性的引用计数+1.对象还是原先的值，只是引用计数先-1再+1.只是指针的赋值。</p>
 
 <pre><code>- (void)setContent:(NSString *)paramContent
 {
-	[paramContent autorelease];
-	self.content = [paramContent retain];
-}</code></pre>
+    [paramContent autorelease];
+    self.content = [paramContent retain];
+}
+</code></pre>
 
 <p>使用copy与使用retain的区别应该就是，copy是深复制。copy没有增加引用计数，是分配一块新的内存来放置参数值。</p>
 
@@ -130,39 +136,32 @@ http://blog.devtang.com/blog/2012/08/05/use-modern-objective-c/'>Objective-C新�
 {
     [paramContent autorelease];
     self.content = [paramContent copy];
-}</code></pre>
+}
+</code></pre>
 
 <ul>
-<li>
-<p>使用assign: 对基础数据类型 （NSInteger，CGFloat）和C数据类型（int, float, double, char, 等等）</p>
-</li>
+<li>使用assign: 对基础数据类型 （NSInteger，CGFloat）和C数据类型（int, float, double, char, 等等）</li>
+<li>使用copy： 对NSString</li>
+<li>使用retain： 对其他NSObject和其子类</li>
+</ul>
 
-<li>
-<p>使用copy： 对NSString</p>
-</li>
-
-<li>
-<p>使用retain： 对其他NSObject和其子类</p>
-
-<h3 id='readwritereadonly'>readwrite,readonly</h3>
+<h3>readwrite,readonly</h3>
 
 <p>设置可供访问级别</p>
 
-<h3 id='atomicnonatomic'>atomic、nonatomic</h3>
-</li>
-</ul>
+<h3>atomic、nonatomic</h3>
 
 <p>atomic是Obj-C使用的一种线程保护技术，基本上来讲，是防止在写未完成的时候被另外一个线程读取，造成数据错误。而这种机制是耗费系统资源的，所以在iPhone这种小型设备上，如果没有使用多线程间的通讯编程，那么nonatomic是一个非常好的选择。</p>
 
-<h3 id='dynamic_synthesize'>dynamic 和　synthesize</h3>
+<h3>dynamic 和　synthesize</h3>
 
 <p>使用dynamic，编译器会期望你为属性手动些存储器方法</p>
 
 <p>默认的存储器方法约定应该是<code>setVariableName</code>和<code>VariableName</code></p>
 
-<h3 id='xcode_44'>Xcode 4.4</h3>
+<h3>Xcode 4.4</h3>
 
-<p>http://stackoverflow.com/questions/3802851/objective-c-synthesize-property-name-overriding</p>
+<p><a href="http://stackoverflow.com/questions/3802851/objective-c-synthesize-property-name-overriding">http://stackoverflow.com/questions/3802851/objective-c-synthesize-property-name-overriding</a></p>
 
 <pre><code>@synthesize dummyLabel = _dummyLabel;
 
@@ -173,9 +172,10 @@ You can only use dot syntax for synthesized properties.
 self.dummyLabel  //works
 self._dummyLabel //does not work
 dummyLabel       //does not work
-_dummyLabel      //works</code></pre>
+_dummyLabel      //works
+</code></pre>
 
-<h2 id='class'>Class</h2>
+<h2>Class</h2>
 
 <p>NSObject是所有类的根类</p>
 
@@ -183,7 +183,7 @@ _dummyLabel      //works</code></pre>
 
 <p>在m文件里面定义的都是私有的（方法 or 变量）</p>
 
-<h2 id='protocol'>Protocol</h2>
+<h2>Protocol</h2>
 
 <pre><code>@protocol BaseballPlayer
 -(void)drawHugeSalary;
@@ -192,36 +192,42 @@ _dummyLabel      //works</code></pre>
 -(void)catchBall;
 @required
 -(void)swingBat;
-@end</code></pre>
+@end
+</code></pre>
 
 <p>因此，一个采用BaseballPlayer协议的类有两个要求实现的方法：-drawHugeSalary和-swingBat,还有3个不可选择实现的方法：slideHome,catchBall和throwBall。</p>
 
-<h3 id='blocks'>Blocks</h3>
+<h3>Blocks</h3>
 
-<h3 id='gcd'>GCD</h3>
+<h3>GCD</h3>
 
-<h3 id='kvc_kvo'>KVC KVO</h3>
+<h3>KVC KVO</h3>
 
-<h2 id='id52'>宏</h2>
+<h2>宏</h2>
 
 <p>小技巧</p>
 
 <p>输出变量值的宏</p>
 
-<pre><code>#define LOGVAR(var) NSLOG(@&quot;%s: %@&quot;, #var, var);</code></pre>
+<pre><code>#define LOGVAR(var) NSLOG(@&quot;%s: %@&quot;, #var, var);
+</code></pre>
 
 <p>其中#var会自动调用字符串化函数</p>
 
-<h2 id='exception'>Exception</h2>
+<h2>Exception</h2>
 
 <pre><code>@try {
 }
 @catch (NSException *e) {
 }
 @finally {
-}</code></pre>
+}
+</code></pre>
 
-<h3 id='nserror'>NSError</h3>
+<h3>NSError</h3>
 
-<h2 id='id53'>多线程　</h2></html>
+<h2>多线程　</h2>
+
 </body>
+</html>
+

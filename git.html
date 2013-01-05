@@ -1,42 +1,55 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./style.css>
+</head>
+
 <body>
-<h1 id='git'>Git</h1>
+	<h1>Git</h1>
 
-<h2 id='init'>Init</h2>
+<h2>Init</h2>
 
-<pre><code>git config --global user.name &quot;Your Name Comes Here&quot;	git config --global user.email you@yourdomain.example.com</code></pre>
+<pre><code>git config --global user.name &quot;Your Name Comes Here&quot;
+git config --global user.email you@yourdomain.example.com
+</code></pre>
 
-<h2 id='add'>Add</h2>
+<h2>Add</h2>
 
 <pre><code>git add . 
-git add somefiles</code></pre>
+git add somefiles
+</code></pre>
 
-<h2 id='commit'>Commit</h2>
+<h2>Commit</h2>
 
 <pre><code>git commit 
 git commit -m&quot;with some message&quot;
-git commit -a  # Auto tract file that already add</code></pre>
+git commit -a  # Auto tract file that already add
+</code></pre>
 
-<h2 id='gitignore'>.gitignore</h2>
+<h2>.gitignore</h2>
 
-<pre><code>echo &quot;zh&quot; &gt; .gitignore # ignore the zh dir</code></pre>
+<pre><code>echo &quot;zh&quot; &gt; .gitignore # ignore the zh dir
+</code></pre>
 
-<h2 id='git_log'>Git log</h2>
+<h2>Git log</h2>
 
 <pre><code>git log
 git log --stat --summary # look version&#39;s change
 
-git show dfb02e6e4f2f7b573337763e5c0013802e392818	git show dfb02 
-git show HEAD # Show now branch&#39;s new version	git show HEAD^ # Show HEAD&#39;s father	git show HEAD^^ # 查看 HEAD&#39;s grandfather	git show HEAD~4 # 查看 HEAD grandfather&#39;s grandfather	git tag v0.1 dfb02	
-git show	</code></pre>
+git show dfb02e6e4f2f7b573337763e5c0013802e392818
+git show dfb02 
 
-<h2 id='branch'>Branch</h2>
+git show HEAD # Show now branch&#39;s new version
+git show HEAD^ # Show HEAD&#39;s father
+git show HEAD^^ # 查看 HEAD&#39;s grandfather
+git show HEAD~4 # 查看 HEAD grandfather&#39;s grandfather
+
+git tag v0.1 dfb02  
+git show    
+</code></pre>
+
+<h2>Branch</h2>
 
 <pre><code>git branch local # add the &quot;local&quot; branch
 git branch # show the branch
@@ -45,13 +58,19 @@ git checkout local # switch to local
 git checkout master
 git merge local
 git branch -d local # delete local if merge
-git branch -D local # delete </code></pre>
+git branch -D local # delete 
+</code></pre>
 
-<h2 id='git_revert'>git revert</h2>
+<h2>git revert</h2>
 
-<pre><code>git revert commit-id #恢复历史版本</code></pre>
+<pre><code>git revert commit-id #恢复历史版本
+</code></pre>
 
-<h2 id='git_reset'>git reset</h2>
+<h2>git reset</h2>
 
-<pre><code>git reset commit-id #重置为历史状态</code></pre></html>
+<pre><code>git reset commit-id #重置为历史状态
+</code></pre>
+
 </body>
+</html>
+

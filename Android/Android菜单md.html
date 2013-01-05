@@ -1,14 +1,14 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
-<body>
-<p>侧滑菜单</p>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
 
-<p><a href='http://stackoverflow.com/questions/8657894/android-facebook-style-slide'>http://stackoverflow.com/questions/8657894/android-facebook-style-slide</a></p>
+<body>
+	<p>侧滑菜单</p>
+
+<p><a href="http://stackoverflow.com/questions/8657894/android-facebook-style-slide">http://stackoverflow.com/questions/8657894/android-facebook-style-slide</a></p>
 
 <p>Activity中按Menu显示的菜单：</p>
 
@@ -18,25 +18,27 @@
         return true;
     }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.menu_settings:
-			startActivity(new Intent(this,PrefsActivity.class));
-			//启动菜单Activity
-		}
-	
-		return super.onOptionsItemSelected(item);
-	}</code></pre>
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_settings:
+            startActivity(new Intent(this,PrefsActivity.class));
+            //启动菜单Activity
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+</code></pre>
 
 <p>其中<code>activity_main</code>内容：</p>
 
-<pre><code>	&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-	    &lt;item android:id=&quot;@+id/menu_settings&quot;
-	        android:title=&quot;@string/menu_settings&quot;
-	        android:orderInCategory=&quot;100&quot;
-	        android:showAsAction=&quot;never&quot; /&gt;
-	&lt;/menu&gt;</code></pre>
+<pre><code>    &lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+        &lt;item android:id=&quot;@+id/menu_settings&quot;
+            android:title=&quot;@string/menu_settings&quot;
+            android:orderInCategory=&quot;100&quot;
+            android:showAsAction=&quot;never&quot; /&gt;
+    &lt;/menu&gt;
+</code></pre>
 
 <p>PrefsActivity</p>
 
@@ -46,8 +48,9 @@
 public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     addPreferencesFromResource(R.menu.prefs);
-    
-}</code></pre>
+
+}
+</code></pre>
 
 <p>res/menu/prefs.xml</p>
 
@@ -65,13 +68,15 @@ public void onCreate(Bundle savedInstanceState) {
         android:title=&quot;Password&quot; &gt;
     &lt;/EditTextPreference&gt;
 
-&lt;/PreferenceScreen&gt;</code></pre>
+&lt;/PreferenceScreen&gt;
+</code></pre>
 
 <p>在程序中调用</p>
 
 <pre><code>SharedPreferences prefs;
 prefs = PreferenceManager.getDefaultSharedPreferences(this);
-String username = prefs.getString(&quot;username&quot;, &quot;hello, I&#39;m defualt&quot;);      </code></pre>
+String username = prefs.getString(&quot;username&quot;, &quot;hello, I&#39;m defualt&quot;);      
+</code></pre>
 
 <p>首选项可能改变，所以要实现监听的接口</p>
 
@@ -84,11 +89,15 @@ prefs.registerOnSharedPreferenceChangeListener((OnSharedPreferenceChangeListener
 
 @Override
 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-		String key) {
-	
+        String key) {
+
 }
 
-｝</code></pre>
+｝
+</code></pre>
 
-<p>当然在Manifest中要注册PrefsActivity</p></html>
+<p>当然在Manifest中要注册PrefsActivity</p>
+
 </body>
+</html>
+

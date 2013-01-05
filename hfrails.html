@@ -1,103 +1,126 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./style.css>
+</head>
+
 <body>
-<h2 id='scaffold'>Scaffold</h2>
+	<h2>Scaffold</h2>
 
 <ul>
-<li><code>rails generate scaffold ticket name:string address:text paid:decimal  </code></li>
-
+<li><code>rails generate scaffold ticket name:string address:text paid:decimal</code></li>
 <li><code>rails g …</code></li>
-
 <li><code>rails destory(d) …</code></li>
-
 <li><code>rake db:migrate</code></li>
-
 <li><code>rails g migration AddPhoneToTickets phone:string</code> (Then Change the Views)</li>
 </ul>
 
-<h2 id='no_scaffold'>No Scaffold</h2>
+<h2>No Scaffold</h2>
 
-<h3 id='model'>Model</h3>
+<h3>Model</h3>
 
 <ul>
-<li>
-<p><code>rails g model ad name:string description:text price:decimal seller_id:integer</code> (Then migrate)</p>
-
-<h3 id='controller'>Controller</h3>
-</li>
-
-<li>
-<p><code>rails g controller ads</code> (The model is ad and the controller is ads)</p>
-
-<h3 id='routes'>Routes</h3>
-
-<pre><code>match &#39;/ads/&#39; =&gt; &#39;ads#index&#39; 
-match &#39;/ads/:id&#39; =&gt; &#39;ads#show&#39;
-match &#39;/ads/:id/new&#39; =&gt; &#39;ads#new&#39;
-match &#39;/ads/:id/create&#39; =&gt; &#39;ads#create&#39; 
-match &#39;/ads/:id/delete&#39; =&gt; &#39;ads#destory&#39;
-match &#39;/ads/:id/edit&#39; =&gt; &#39;ads#edit&#39;
-match &#39;ads/:id/update&#39; =&gt; &#39;ads#update&#39;</code></pre>
-
-<h3 id='controller'>Controller:</h3>
-
-<p>class AdsController &lt; ApplicationController</p>
-
-<p>before_filter :check_logged_in, :only =&gt; <span>:edit, :update, :destory</span></p>
-
-<p>def new @ad = Ad.new end</p>
-
-<p>def create @ad = Ad.new(params<span>:id</span>) @ad.save redirect_to &#8220;/ads/#{@ad.id}&#8221; end</p>
-
-<p>def edit @ad = Ad.find(params<span>:id</span>) end</p>
-
-<p>def update @ad = Ad.find(params<span>:id</span>) @ad.update_attributes(params<span>:ad</span>) redirect_to &#8216;/ads/#{@ad.id}&#8217; end</p>
-
-<p>def show @ad = Ad.find(params<span>:id</span>) end</p>
-
-<p>def index @ads = Ad.find(:all) end</p>
-
-<p>def destory @ad = Ad.find(params<span>:id</span>) @ad.destory redirect_to &#8216;/ads/&#8217; end</p>
-
-<p>private def check_logged_in authenticate_or_request_with_http_basic(&#8220;Ads&#8221;) do |username, password| username =&#8221;oa414&#8221; password = &#8220;888888&#8221; end end</p>
-</li>
+<li><code>rails g model ad name:string description:text price:decimal seller_id:integer</code> (Then migrate)
+### Controller</li>
+<li><code>rails g controller ads</code> (The model is ad and the controller is ads)
+### Routes
+    match &#39;/ads/&#39; =&gt; &#39;ads#index&#39; 
+    match &#39;/ads/:id&#39; =&gt; &#39;ads#show&#39;
+    match &#39;/ads/:id/new&#39; =&gt; &#39;ads#new&#39;
+    match &#39;/ads/:id/create&#39; =&gt; &#39;ads#create&#39; 
+    match &#39;/ads/:id/delete&#39; =&gt; &#39;ads#destory&#39;
+    match &#39;/ads/:id/edit&#39; =&gt; &#39;ads#edit&#39;
+    match &#39;ads/:id/update&#39; =&gt; &#39;ads#update&#39;</li>
 </ul>
+
+<h3>Controller:</h3>
+
+<pre><code>class AdsController &lt; ApplicationController
+
+before_filter :check_logged_in, :only =&gt; [:edit, :update, :destory]
+
+def new
+    @ad = Ad.new
+end
+
+def create
+    @ad = Ad.new(params[:id])
+    @ad.save
+    redirect_to &quot;/ads/#{@ad.id}&quot;
+end
+
+def edit
+    @ad = Ad.find(params[:id])
+end
+
+def update
+    @ad = Ad.find(params[:id])
+    @ad.update_attributes(params[:ad])
+    redirect_to &#39;/ads/#{@ad.id}&#39;
+end
+
+
+def show
+    @ad = Ad.find(params[:id])  
+end
+
+def index
+    @ads = Ad.find(:all)
+end
+
+def destory
+    @ad = Ad.find(params[:id])
+    @ad.destory
+    redirect_to &#39;/ads/&#39;
+end
+
+private
+def check_logged_in
+    authenticate_or_request_with_http_basic(&quot;Ads&quot;) do |username, password|
+        username =&quot;oa414&quot;
+        password = &quot;888888&quot;
+    end
+end
+</code></pre>
 
 <p>end</p>
 
-<h3 id='view'>View</h3>
+<h3>View</h3>
 
 <pre><code>= form_for(@ad, :url =&gt; (:action=&gt; create[update])) do |f|
 XXXXXX f.text_field :name
 XXXXXX f.text_area :description
-f.submit  &quot;Create&quot;</code></pre>
+f.submit  &quot;Create&quot;
+</code></pre>
 
-<h3 id='search'>Search</h3>
+<h3>Search</h3>
 
 <pre><code>= form_tag &quot;/client_workouts/find&quot; do # form_tag is the form that doesn&#39;t have model relation
-	text_fielad_tag :search_string
-	submit_tag &quot;Search&quot;</code></pre>
+    text_fielad_tag :search_string
+    submit_tag &quot;Search&quot;
+</code></pre>
 
 <p>The controller</p>
 
 <pre><code>@client_workouts =ClientWorkouts.find_all_by_client_name(param[:search_string)
 
-@client_workouts = Client_workouts.find(:all, :conditions =&gt; [&quot;client_name = ? OR trainer =?&quot;, params[:search_string], param[:search_string]])</code></pre>
+@client_workouts = Client_workouts.find(:all, :conditions =&gt; [&quot;client_name = ? OR trainer =?&quot;, params[:search_string], param[:search_string]])
+</code></pre>
 
 <p>The View</p>
 
-<pre><code>list a form</code></pre>
+<pre><code>list a form
+</code></pre>
 
-<h3 id='validates'>Validates</h3>
+<h3>Validates</h3>
 
-<h2 id='view'>View</h2>
+<h2>View</h2>
 
 <ul>
-<li>render :partial-&gt;&#8221;new_seat&#8221; # render <em>new</em>seat</li>
-</ul></html>
+<li>render :partial-&gt;&quot;new<em>seat&quot;   # render _new</em>seat</li>
+</ul>
+
 </body>
+</html>
+

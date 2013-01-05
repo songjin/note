@@ -1,42 +1,44 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<h2 id='framework'>Framework</h2>
+	<h2>Framework</h2>
 
-<h3 id='mainloop'>MainLoop</h3>
+<h3>MainLoop</h3>
 
-<h3 id='state_manager'>State Manager</h3>
+<h3>State Manager</h3>
 
 <p>The Game state manager is a state machine.It will track the game state and manage the game information. The simplest state mathine is a switch statement:</p>
 
 <pre><code>swtich (mystate)
 {
-	case STATE_01:
-	case STATE_02:
-}　</code></pre>
+    case STATE_01:
+    case STATE_02:
+}　
+</code></pre>
 
 <p>To manage the complex　game state, wee will use OOP</p>
 
 <pre><code>Class GameState
 {
-	...
+    ...
 }
 
 class StateManager {
-	void mainloop(){
-		...
-	}
-	void change(){
-		...
-	}
-}</code></pre>
+    void mainloop(){
+        ...
+    }
+    void change(){
+        ...
+    }
+}
+</code></pre>
 
-<h3 id='graphical_engine'>Graphical Engine</h3>
+<h3>Graphical Engine</h3>
 
 <p>向屏幕绘制的基本度量单位是像素，包含红蓝绿以及Alpha</p>
 
@@ -46,5 +48,8 @@ class StateManager {
 
 <p>旋转：２D实现的话计算比较大</p>
 
-<p>动画：为了保证帧的连续，二维动画每一帧要放在一个相同的纹理里面，那个纹理就是精灵。２D动画是每次重绘，每一帧都需要美工做好，而３D是通过几何计算生成，存储关键帧坐标即可。</p></html>
+<p>动画：为了保证帧的连续，二维动画每一帧要放在一个相同的纹理里面，那个纹理就是精灵。２D动画是每次重绘，每一帧都需要美工做好，而３D是通过几何计算生成，存储关键帧坐标即可。</p>
+
 </body>
+</html>
+

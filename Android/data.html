@@ -1,12 +1,12 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<h2 id='json'>解析JSON</h2>
+	<h2>解析JSON</h2>
 
 <p>JSON太多引号转义，Java又没有原始字符串，就不写了。</p>
 
@@ -17,12 +17,13 @@
         String name line1 = personJsonObject.getString(&quot;name&quot;);
         line1.setText(&quot;The person&#39;s name is&quot; + name );
         line2.setText(name + &quot;has&quot; + personJsonObject.getJSONArray(&quot;chrildred&quot;).length + &quot;chirldren&quot;);
-        
+
     }catch (JSONException e) {
         e.printStackTrace();
-    }</code></pre>
+    }
+</code></pre>
 
-<h3 id='id20'>下载图片</h3>
+<h3>下载图片</h3>
 
 <p>注：这个程序运行的时候意外退出</p>
 
@@ -48,21 +49,21 @@ import android.widget.ImageView;
 
 public class WebImageView extends ImageView {
     private Drawable mPlaceholder, mImage;
-    
+
 
 public WebImageView (Context context) {
     this(context, null);
-    
+
 }
 
 public WebImageView (Context context, AttributeSet attrs) {
     this(context, null, 0);
-    
+
 }
 
 public WebImageView (Context context, AttributeSet attrs,int defualtStyle) {
     super(context, null, defualtStyle);
-    
+
 }
 
 
@@ -84,8 +85,8 @@ public void  setImageUrl(String url) {
     DownlandTask task = new DownlandTask();
     task.execute(url);
 }
-    
-    
+
+
 private class DownlandTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
 
     @Override
@@ -108,8 +109,8 @@ private class DownlandTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
             // TODO: handle exception
         }
     }
-        
-        
+
+
         @SuppressWarnings(&quot;deprecation&quot;)
         @Override
         protected void onPostExecute(Bitmap result) {
@@ -118,9 +119,10 @@ private class DownlandTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
                 setImageDrawable(mImage);
             }
         }
-        
 
-}</code></pre>
+
+}
+</code></pre>
 
 <p>}</p>
 
@@ -128,7 +130,8 @@ private class DownlandTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
 
 <pre><code>        WebImageView imageView = (WebImageView)findViewById(R.id.webImage);
         //imageView.setPlaceholderImage(R.drawable.icon);
-        //imageView.setImageUrl(&quot;http://www.ruby-lang.org/images/logo.gif&quot;);</code></pre>
+        //imageView.setImageUrl(&quot;http://www.ruby-lang.org/images/logo.gif&quot;);
+</code></pre>
 
 <p>layout声明</p>
 
@@ -138,7 +141,8 @@ private class DownlandTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
     android:id = &quot;@+ id/webImage&quot;
     android:layout_width=&quot;wrap_content&quot;
     android:layout_height=&quot;wrap_content&quot;
-  /&gt;</code></pre>
+  /&gt;
+</code></pre>
 
 <p>注意：Android的UI类都是非线程安全的。一样要在主程序中用回调方法来更新UI，不要在doInBackground中更新。</p>
 
@@ -147,5 +151,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.activity_main, menu);
     return true;
 }
-}</code></pre></html>
+}
+</code></pre>
+
 </body>
+</html>
+

@@ -1,43 +1,56 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-  <link rel="stylesheet" type="text/css" href="http://wiki.ktmud.com/style.css">
-<html>
-</html>
-<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href=./../style.css>
+</head>
+
 <body>
-<p>创建一个服务（当然要在Manifest中注册）</p>
+	<p>创建一个服务（当然要在Manifest中注册）</p>
 
 <pre><code>public class update extends Service {
 
-	@Override
-	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-}</code></pre>
+}
+</code></pre>
 
 <p>启动或者暂停服务</p>
 
 <pre><code>startService(new Intent(this, update.class));
-stopService(new Intent(this, update.class));</code></pre>
+stopService(new Intent(this, update.class));
+</code></pre>
 
 <p>用一个内部类继承Thread来定时在后台开启服务</p>
 
 <pre><code>private class DoSomething extends Thread {
 
 
-	public void run(){
-		While (runFlag) {
-			doSomething();
-			Thread.sleep(DELAY);
-		}
-	}
+    public void run(){
+        While (runFlag) {
+            doSomething();
+            Thread.sleep(DELAY);
+        }
+    }
 
-}</code></pre>
+}
+</code></pre>
 
-<p>将组件放入独立的进程中,可以通过配置文件的 process 参数来实现,代码如下: // 在service配置信息中,增加process <pre class='markdown-html-error' style='border: solid 3px red; background-color: pink'>REXML could not parse this XML/HTML: 
-&lt;service android:name=&quot;SimpleService&quot;
-		android:process=&quot;:a_unique_process_name&quot;/&gt;</pre> 但这样的方式会增加进程开销。因此,另一种可行的策略是在服务组件中另起一个 独立的线程,将那些耗时又费力的操作交给它来打理。</p></html>
+<p>将组件放入独立的进程中,可以通过配置文件的 process 参数来实现,代码如下:</p>
+
+<pre><code>    // 在service配置信息中,增加process 
+
+    &lt;service android:name=&quot;SimpleService&quot;
+
+    android:process=&quot;:a_unique_process_name&quot;/&gt;
+</code></pre>
+
+<p>但这样的方式会增加进程开销。因此,另一种可行的策略是在服务组件中另起一个 独立的线程,将那些耗时又费力的操作交给它来打理。</p>
+
 </body>
+</html>
+
